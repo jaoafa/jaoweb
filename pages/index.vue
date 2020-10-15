@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+    <section class="hero-section">
+      <img src="/img/main-visual.jpg" />
+    </section>
+  </div>
 </template>
 
 <script>
@@ -11,3 +15,16 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.hero-section {
+  width: 100%;
+  height: 680px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+</style>

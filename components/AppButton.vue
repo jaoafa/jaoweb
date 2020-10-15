@@ -1,0 +1,153 @@
+<template>
+  <button :class="classes" type="button" @click="click">
+    <span class="app-button__content">
+      <app-icon v-if="icon" class="app-button__icon">{{ icon }}</app-icon>
+      <slot />
+    </span>
+  </button>
+</template>
+
+<script>
+export default {
+  props: {
+    color: {
+      default: 'primary',
+      type: String,
+    },
+    icon: {
+      default: '',
+      type: String,
+    },
+    large: {
+      default: false,
+      type: Boolean,
+    },
+    outlined: {
+      default: false,
+      type: Boolean,
+    },
+    small: {
+      default: false,
+      type: Boolean,
+    },
+    to: {
+      default: '',
+      type: String,
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        'app-button': true,
+        [`app-button--color--${this.color}`]: true,
+        'app-button--size--large': this.large,
+        'app-button--size--small': this.small,
+        'app-button--size--default': !this.large && !this.small,
+        'app-button--outlined': this.outlined,
+      }
+    },
+  },
+  methods: {
+    click(event) {
+      this.$emit('change', event)
+      if (this.to) {
+        this.$router.push(this.to)
+      }
+    },
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+$app-button-sizes: (
+  large: (
+    'height': $size-base * 6,
+    'padding': $size-base * 3,
+    'text-size': $font-size-base,
+    'icon-size': $font-size-l2,
+  ),
+  small: (
+    'height': $size-base * 3.5,
+    'padding': $size-base * 1,
+    'text-size': $font-size-s4,
+    'icon-size': $font-size-base,
+  ),
+  default: (
+    'height': $size-base * 4,
+    'padding': $size-base * 2,
+    'text-size': $font-size-s2,
+    'icon-size': $font-size-l1,
+  ),
+);
+
+$app-button-colors: (
+  primary: (
+    'text': $color-gray-1,
+    'background': $color-primary,
+    'hover': $color-primary-light,
+    'outlined-text': $color-gray-1,
+    'outlined-border': $color-primary,
+    'outlined-hover-text': $color-gray-1,
+    'outlined-hover-background': $color-primary,
+  ),
+);
+
+.app-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  font-weight: $font-weight-bold;
+  transition-duration: ($transition-duration-base * 1);
+
+  @each $name, $size in $app-button-sizes {
+    &--size--#{$name} {
+      height: map-get($size, 'height');
+      padding: 0 map-get($size, 'padding');
+      font-size: map-get($size, 'text-size');
+
+      .app-button__icon {
+        font-size: map-get($size, 'icon-size');
+      }
+    }
+  }
+
+  @each $name, $color in $app-button-colors {
+    &--color--#{$name} {
+      color: map-get($color, 'text');
+      background: map-get($color, 'background');
+      border-color: map-get($color, 'outlined-border');
+      box-shadow: 2px 2px $color-white,
+        3px 3px 0 1px map-get($color, 'background');
+
+      &:hover {
+        background: map-get($color, 'hover');
+        box-shadow: 2px 2px $color-white, 3px 3px 0 1px map-get($color, 'hover');
+      }
+
+      &.app-button--outlined {
+        color: map-get($color, 'outlined-text');
+
+        &:hover {
+          color: map-get($color, 'outlined-hover-text');
+          background: map-get($color, 'outlined-hover-background');
+        }
+      }
+    }
+  }
+
+  &--outlined {
+    background: transparent;
+    border-style: solid;
+    border-width: 2px;
+  }
+}
+
+.app-button__content {
+  display: flex;
+  align-items: center;
+}
+
+.app-button__icon {
+  margin: ($size-base * 0.5) ($size-base * 1) 0 0;
+}
+</style>

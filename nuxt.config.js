@@ -45,6 +45,15 @@ export default {
         type: 'image/x-icon',
         href: '/favicons/favicon.ico',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap',
+      },
     ],
   },
   css: ['@/assets/sass/_reset.scss'],

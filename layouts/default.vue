@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="container">
+    <the-header />
+    <main class="main">
+      <Nuxt />
+    </main>
   </div>
 </template>
 
@@ -13,8 +16,18 @@ export default {}
   box-sizing: border-box;
 }
 body {
-  color: $color-gray-1;
   font-family: $font-family-base;
   line-height: $font-height-base;
+  color: $color-gray-1;
+}
+.container {
+  position: relative;
+}
+.main {
+  padding-top: $size-base * 6;
+
+  @include bp(md) {
+    padding-top: $size-base * 9;
+  }
 }
 </style>

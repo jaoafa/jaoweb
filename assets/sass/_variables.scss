@@ -5,10 +5,17 @@
 // Sizes
 // --------------------------------------------------------------------------------
 $size-base: 8px;
+$size-width-max: 1248px;
 
 // Fonts
 // --------------------------------------------------------------------------------
+$font-size-l2: 24px;
+$font-size-l1: 18px;
 $font-size-base: 14px;
+$font-size-s1: 13px;
+$font-size-s2: 12px;
+$font-size-s3: 11px;
+$font-size-s4: 10px;
 
 $font-family-base:
   'Noto Sans JP',
@@ -18,7 +25,6 @@ $font-family-base:
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
-$font-weight-icon: 600;
 
 $font-height-base: 1.8;
 
@@ -29,9 +35,15 @@ $transition-duration-base: .1s;
 // Colors
 // --------------------------------------------------------------------------------
 $color-primary: #ffb41d;
+$color-primary-light: lighten($color-primary, 10%);
 
 $color-black: #1c1c1c;
 $color-gray-1: #3c3c3c;
+$color-gray-2: #535353;
+$color-gray-3: #727272;
+$color-gray-4: #bdbdbd;
+$color-gray-5: #f0f0f0;
+$color-gray-6: #f8f8f8;
 $color-white: #fff;
 
 $color-brand-discord: #7289da;
