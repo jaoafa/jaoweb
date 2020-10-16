@@ -19,6 +19,7 @@ body {
   font-family: $font-family-base;
   line-height: $font-height-base;
   color: $color-gray-1;
+  background: $color-background-base;
 }
 .container {
   position: relative;

@@ -1,9 +1,25 @@
 <template>
-  <span class="app-icon material-icons"><slot /></span>
+  <span :class="classes"></span>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    icon: {
+      default: '',
+      type: String,
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        'app-icon': true,
+        mdi: true,
+        [`mdi-${this.icon}`]: this.icon,
+      }
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

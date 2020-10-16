@@ -15,11 +15,12 @@
           <template v-else>
             <span class="the-header-navigation__label">{{ item.text }}</span>
             <app-icon
-              class="the-header-navigation__icon"
-              :class="{ current: value === item.value }"
-            >
-              expand_more
-            </app-icon>
+              :class="{
+                'the-header-navigation__icon': true,
+                current: value === item.value,
+              }"
+              icon="chevron-down"
+            />
           </template>
         </li>
       </template>
@@ -50,6 +51,12 @@ export default {
   methods: {
     updateValue(value) {
       if (this.value === value) {
+        this.$emit('change', '')
+      } else if (
+        this.items.some((item) => {
+          return item.to && item.value === value
+        })
+      ) {
         this.$emit('change', '')
       } else {
         this.$emit('change', value)
@@ -86,7 +93,6 @@ export default {
 .the-header-navigation__icon {
   vertical-align: middle;
   transition-duration: ($transition-duration-base * 1);
-  transform-origin: 50% 45%;
 
   &.current {
     transform: rotateZ(180deg);
