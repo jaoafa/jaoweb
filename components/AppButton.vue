@@ -1,7 +1,7 @@
 <template>
   <button :class="classes" type="button" @click="click">
     <span class="app-button__content">
-      <app-icon v-if="icon" class="app-button__icon">{{ icon }}</app-icon>
+      <app-icon v-if="icon" class="app-button__icon" :icon="icon" />
       <slot />
     </span>
   </button>
@@ -99,6 +99,18 @@ $app-button-colors: (
   font-weight: $font-weight-bold;
   transition-duration: ($transition-duration-base * 1);
 
+  &::before {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 0;
+    height: 0;
+    content: '';
+    border: solid 6px transparent;
+    border-bottom-color: $color-white;
+    transform: rotate(-45deg);
+  }
+
   @each $name, $size in $app-button-sizes {
     &--size--#{$name} {
       height: map-get($size, 'height');
@@ -148,6 +160,6 @@ $app-button-colors: (
 }
 
 .app-button__icon {
-  margin: ($size-base * 0.5) ($size-base * 1) 0 0;
+  margin: ($size-base * 0.25) ($size-base * 1) 0 0;
 }
 </style>
