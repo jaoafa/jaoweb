@@ -12,10 +12,11 @@ export default {
   },
   computed: {
     classes() {
+      const icon = this.icon
       return {
         'app-icon': true,
         mdi: true,
-        [`mdi-${this.icon}`]: this.icon,
+        [`mdi-${icon}`]: icon,
       }
     },
   },

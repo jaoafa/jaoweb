@@ -1,6 +1,7 @@
 <template>
   <nav class="the-header-expanded-desktop">
     <template v-for="category in items">
+      <!-- Carousel item -->
       <ul
         :key="category.value"
         :class="{
@@ -14,6 +15,7 @@
           :key="item.value"
           class="the-header-expanded-desktop__item"
         >
+          <!-- Internal link -->
           <nuxt-link
             v-if="item.to"
             :to="item.to"
@@ -21,6 +23,7 @@
           >
             {{ item.text }}
           </nuxt-link>
+          <!-- External link -->
           <a
             v-else-if="item.href"
             :href="item.href"
@@ -28,10 +31,13 @@
           >
             {{ item.text }}
           </a>
+          <!-- Text -->
           <span v-else>{{ item.text }}</span>
+          <!-- Sub items -->
           <template v-if="item.children">
             <ul>
               <li v-for="page in item.children" :key="page.value">
+                <!-- Internal link -->
                 <nuxt-link
                   v-if="page.to"
                   :to="page.to"
@@ -39,6 +45,7 @@
                 >
                   {{ page.text }}
                 </nuxt-link>
+                <!-- External link -->
                 <a
                   v-else-if="page.href"
                   :href="page.href"
@@ -46,12 +53,15 @@
                 >
                   {{ page.text }}
                 </a>
+                <!-- Text -->
                 <span v-else>{{ page.text }}</span>
               </li>
             </ul>
           </template>
+          <!-- / Sub item -->
         </li>
       </ul>
+      <!-- / Carousel item -->
     </template>
   </nav>
 </template>
@@ -75,8 +85,10 @@ export default {
   },
   computed: {
     currentItemIndex() {
-      return this.items.findIndex((item) => {
-        return item.value === this.current
+      const items = [...this.items]
+      const current = this.current
+      return items.findIndex((item) => {
+        return item.value === current
       })
     },
   },

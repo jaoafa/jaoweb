@@ -55,12 +55,4 @@ export default {
     }
   }
 }
-
-.the-header-expanded__main {
-  &--mobile {
-    @include bp(md) {
-      display: none;
-    }
-  }
-}
 </style>

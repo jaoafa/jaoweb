@@ -1,17 +1,26 @@
 <template>
   <nav class="the-header-navigation">
     <ul class="the-header-navigation__list">
+      <!-- Navigation items -->
       <template v-for="item in items">
         <li
           :key="item.value"
           class="the-header-navigation__item"
           @click="updateValue(item.value)"
         >
+          <!-- Internal link -->
           <template v-if="item.to">
             <nuxt-link class="the-header-navigation__link" :to="item.to">
               <span class="the-header-navigation__label">{{ item.text }}</span>
             </nuxt-link>
           </template>
+          <!-- External link -->
+          <template v-else-if="item.href">
+            <a class="the-header-navigation__link" :href="item.href">
+              <span class="the-header-navigation__label">{{ item.text }}</span>
+            </a>
+          </template>
+          <!-- Category label -->
           <template v-else>
             <span class="the-header-navigation__label">{{ item.text }}</span>
             <app-icon
@@ -24,6 +33,9 @@
           </template>
         </li>
       </template>
+      <!-- / Navigation items -->
+
+      <!-- Login button -->
       <li class="the-header-navigation__item">
         <app-button to="/login">ログイン</app-button>
       </li>
@@ -50,10 +62,11 @@ export default {
   },
   methods: {
     updateValue(value) {
+      const items = [...this.items]
       if (this.value === value) {
         this.$emit('change', '')
       } else if (
-        this.items.some((item) => {
+        items.some((item) => {
           return item.to && item.value === value
         })
       ) {

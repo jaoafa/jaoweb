@@ -1,21 +1,28 @@
 <template>
   <header class="the-header">
+    <!-- Main header area -->
     <div class="the-header__main">
+      <!-- Logo -->
       <nuxt-link class="the-header__logo" to="/">
         <app-logo />
       </nuxt-link>
+      <!-- Navigation -->
       <the-header-navigation
         v-model="navigationCurrent"
         class="the-header__navigation"
         :items="navigationItems"
       />
+      <!-- Hamburger -->
       <button
-        class="the-header__toggle"
+        class="the-header__hamburger"
         @click="navigationMobileState = !navigationMobileState"
       >
         <span :class="{ active: navigationMobileState }"></span>
       </button>
     </div>
+    <!-- / Main header area -->
+
+    <!-- Right triangle -->
     <svg
       class="the-header__left"
       viewBox="0 0 174 100"
@@ -25,6 +32,8 @@
         d="M-1.44358e-05 100L-5.69352e-06 -9.53966e-06L173.21 5.60284e-06L-1.44358e-05 100Z"
       />
     </svg>
+
+    <!-- Expanded navigation area -->
     <the-header-expanded
       :current="navigationCurrent"
       :items="navigationItems"
@@ -37,7 +46,9 @@
 export default {
   data() {
     return {
+      // Currently selected navigation item
       navigationCurrent: '',
+      // Navigation items
       navigationItems: [
         {
           text: 'サーバ情報',
@@ -145,6 +156,7 @@ export default {
           ],
         },
       ],
+      // Hamburger, USA
       navigationMobileState: false,
     }
   },
@@ -166,6 +178,7 @@ $header-border-width-desktop: 6px;
   width: 100%;
   background: $color-white;
 
+  // Diagonal orange line under the header
   &::before {
     position: absolute;
     top: $header-main-height-desktop + 7px;
@@ -183,6 +196,7 @@ $header-border-width-desktop: 6px;
       height: $header-border-width-desktop;
     }
   }
+  // Horizontal orange line under the header
   &::after {
     position: absolute;
     top: $header-main-height-mobile + 7px;
@@ -210,6 +224,7 @@ $header-border-width-desktop: 6px;
   padding-left: ($size-base * 2);
   margin: auto;
   border-bottom: solid 1px $color-gray-5;
+
   @include bp(md) {
     grid-template-columns: $header-logo-width-tablet 1fr;
     height: $header-main-height-desktop;
@@ -246,7 +261,7 @@ $header-border-width-desktop: 6px;
   }
 }
 
-.the-header__toggle {
+.the-header__hamburger {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,6 +319,7 @@ $header-border-width-desktop: 6px;
   }
 }
 
+// Right triangle
 .the-header__left {
   position: absolute;
   top: $header-main-height-desktop;

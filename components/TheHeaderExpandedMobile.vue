@@ -12,3 +12,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.the-header-expanded-mobile {
+  @include bp(md) {
+    display: none;
+  }
+}
+</style>
