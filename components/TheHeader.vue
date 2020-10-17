@@ -11,9 +11,10 @@
       />
       <button
         class="the-header__toggle"
-        :class="{ active: navigationMobileState }"
         @click="navigationMobileState = !navigationMobileState"
-      ></button>
+      >
+        <span :class="{ active: navigationMobileState }"></span>
+      </button>
     </div>
     <svg
       class="the-header__left"
@@ -122,7 +123,7 @@ export default {
             },
             {
               text: 'Discord',
-              to: 'https://discord.com/invite/YjwYEBk',
+              href: 'https://discord.com/invite/YjwYEBk',
               value: 'community-discord',
             },
           ],
@@ -151,7 +152,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$header-main-height-mobile: $size-base * 6;
+$header-main-height-mobile: $size-base * 8;
 $header-main-height-desktop: $size-base * 9;
 $header-logo-width-mobile: $size-base * 16;
 $header-logo-width-tablet: $size-base * 20;
@@ -206,16 +207,14 @@ $header-border-width-desktop: 6px;
   align-items: center;
   max-width: $size-width-max;
   height: $header-main-height-mobile;
-  padding: 0 ($size-base * 1);
+  padding-left: ($size-base * 2);
   margin: auto;
-
-  @include bp(sm) {
-    padding: 0 ($size-base * 2);
-  }
+  border-bottom: solid 1px $color-gray-5;
   @include bp(md) {
     grid-template-columns: $header-logo-width-tablet 1fr;
     height: $header-main-height-desktop;
     padding: 0 ($size-base * 3);
+    border-bottom: none;
   }
   @include bp(lg) {
     grid-template-columns: $header-logo-width-desktop 1fr;
@@ -248,50 +247,59 @@ $header-border-width-desktop: 6px;
 }
 
 .the-header__toggle {
-  position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   justify-self: right;
-  width: ($size-base * 3);
-  height: ($size-base * 3);
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    transparent 47%,
-    $color-gray-1 47%,
-    $color-gray-1 53%,
-    transparent 53%,
-    transparent
-  );
+  width: $header-main-height-mobile;
+  height: $header-main-height-mobile;
+  border-left: solid 1px $color-gray-5;
 
   @include bp(md) {
     display: none;
   }
 
-  &::before,
-  &::after {
-    position: absolute;
-    left: 0;
+  span {
+    position: relative;
     display: block;
-    width: 100%;
-    height: 2px;
-    content: '';
-    background: $color-gray-1;
-    transition-duration: ($transition-duration-base * 1);
-  }
-  &::before {
-    top: 4px;
-  }
-  &::after {
-    bottom: 4px;
-  }
-  &.active {
-    background: transparent;
+    width: ($size-base * 2);
+    height: ($size-base * 2.5);
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      transparent 45%,
+      $color-gray-1 45%,
+      $color-gray-1 55%,
+      transparent 55%,
+      transparent
+    );
 
+    &::before,
+    &::after {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      content: '';
+      background: $color-gray-1;
+      transition-duration: ($transition-duration-base * 1);
+    }
     &::before {
-      transform: translate(0, 11.2px) rotateZ(45deg);
+      top: 4px;
     }
     &::after {
-      transform: translate(0, -3.2px) rotateZ(-45deg);
+      bottom: 4px;
+    }
+    &.active {
+      background: transparent;
+
+      &::before {
+        transform: translate(0, 7px) rotateZ(45deg);
+      }
+      &::after {
+        transform: translate(0, -3px) rotateZ(-45deg);
+      }
     }
   }
 }

@@ -69,7 +69,7 @@ export default {
 <style lang="scss" scoped>
 .the-header-navigation__list {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   list-style: none;
 }
 
