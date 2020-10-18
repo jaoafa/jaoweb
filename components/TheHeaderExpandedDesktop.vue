@@ -1,68 +1,65 @@
 <template>
   <nav class="the-header-expanded-desktop">
-    <template v-for="category in items">
-      <!-- Carousel item -->
-      <ul
-        :key="category.value"
-        :class="{
-          current: category.value === current,
-          'the-header-expanded-desktop__category': true,
-        }"
-        :style="{ transform: 'translateX(' + currentIndex * -100 + '%)' }"
+    <!-- Carousel item -->
+    <ul
+      v-for="category in items"
+      :key="category.value"
+      :class="{
+        current: category.value === current,
+        'the-header-expanded-desktop__category': true,
+      }"
+      :style="{ transform: 'translateX(' + currentIndex * -100 + '%)' }"
+    >
+      <li
+        v-for="item in category.children"
+        :key="item.value"
+        class="the-header-expanded-desktop__item"
       >
-        <li
-          v-for="item in category.children"
-          :key="item.value"
-          class="the-header-expanded-desktop__item"
+        <!-- Internal link -->
+        <nuxt-link
+          v-if="item.to"
+          :to="item.to"
+          class="the-header-expanded-desktop__link"
         >
-          <!-- Internal link -->
-          <nuxt-link
-            v-if="item.to"
-            :to="item.to"
-            class="the-header-expanded-desktop__link"
-          >
-            {{ item.text }}
-          </nuxt-link>
-          <!-- External link -->
-          <a
-            v-else-if="item.href"
-            :href="item.href"
-            class="the-header-expanded-desktop__link"
-          >
-            {{ item.text }}
-          </a>
-          <!-- Text -->
-          <span v-else>{{ item.text }}</span>
-          <!-- Sub items -->
-          <template v-if="item.children">
-            <ul>
-              <li v-for="page in item.children" :key="page.value">
-                <!-- Internal link -->
-                <nuxt-link
-                  v-if="page.to"
-                  :to="page.to"
-                  class="the-header-expanded-desktop__link"
-                >
-                  {{ page.text }}
-                </nuxt-link>
-                <!-- External link -->
-                <a
-                  v-else-if="page.href"
-                  :href="page.href"
-                  class="the-header-expanded-desktop__link"
-                >
-                  {{ page.text }}
-                </a>
-                <!-- Text -->
-                <span v-else>{{ page.text }}</span>
-              </li>
-            </ul>
-          </template>
-          <!-- / Sub item -->
-        </li>
-      </ul>
-      <!-- / Carousel item -->
-    </template>
+          {{ item.text }}
+        </nuxt-link>
+        <!-- External link -->
+        <a
+          v-else-if="item.href"
+          :href="item.href"
+          class="the-header-expanded-desktop__link"
+        >
+          {{ item.text }}
+        </a>
+        <!-- Text -->
+        <span v-else>{{ item.text }}</span>
+        <!-- Sub items -->
+        <ul>
+          <li v-for="page in item.children" :key="page.value">
+            <!-- Internal link -->
+            <nuxt-link
+              v-if="page.to"
+              :to="page.to"
+              class="the-header-expanded-desktop__link"
+            >
+              {{ page.text }}
+            </nuxt-link>
+            <!-- External link -->
+            <a
+              v-else-if="page.href"
+              :href="page.href"
+              class="the-header-expanded-desktop__link"
+            >
+              {{ page.text }}
+            </a>
+            <!-- Text -->
+            <span v-else>{{ page.text }}</span>
+          </li>
+        </ul>
+        <!-- / Sub item -->
+      </li>
+    </ul>
+    <!-- / Carousel item -->
   </nav>
 </template>
 

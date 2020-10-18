@@ -19,7 +19,11 @@ export default {
 <style lang="scss" scoped>
 .hero-section {
   width: 100%;
-  height: 680px;
+  height: 280px;
+
+  @include bp(md) {
+    height: 680px;
+  }
 
   img {
     width: 100%;

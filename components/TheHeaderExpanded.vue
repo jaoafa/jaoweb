@@ -41,7 +41,7 @@ export default {
   transition-property: max-height min-height;
 
   &.show {
-    min-height: calc(100vh - #{$size-base * 6});
+    min-height: calc(100vh - #{$size-base * 8});
     overflow: scroll;
 
     @include bp(md) {
