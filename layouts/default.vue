@@ -25,7 +25,7 @@ body {
   position: relative;
 }
 .main {
-  padding-top: $size-base * 6;
+  padding-top: $size-base * 8;
 
   @include bp(md) {
     padding-top: $size-base * 9;
