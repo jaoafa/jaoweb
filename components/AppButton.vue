@@ -1,17 +1,30 @@
 <template>
-  <button :class="classes" type="button" @click="click">
+  <component
+    :is="tag"
+    :class="classes"
+    :href="href"
+    :to="to"
+    type="button"
+    @click="click"
+  >
     <span class="app-button__content">
       <app-icon v-if="icon" class="app-button__icon" :icon="icon" />
       <slot />
     </span>
-  </button>
+  </component>
 </template>
 
 <script>
+import VueScrollTo from 'vue-scrollto'
+
 export default {
   props: {
     color: {
       default: 'primary',
+      type: String,
+    },
+    href: {
+      default: '',
       type: String,
     },
     icon: {
@@ -46,13 +59,24 @@ export default {
         'app-button--outlined': this.outlined,
       }
     },
+    tag() {
+      return this.href && !this.href.startsWith('#')
+        ? 'a'
+        : this.to
+        ? 'nuxt-link'
+        : 'button'
+    },
   },
   methods: {
     click(event) {
-      this.$emit('change', event)
-      if (this.to) {
-        this.$router.push(this.to)
+      if (this.href.startsWith('#')) {
+        this.scrollSmooth()
       }
+      this.$emit('change', event)
+    },
+    scrollSmooth() {
+      const cancelScroll = VueScrollTo.scrollTo(this.href, 200)
+      return cancelScroll
     },
   },
 }
@@ -97,6 +121,7 @@ $app-button-colors: (
   display: inline-flex;
   justify-content: center;
   font-weight: $font-weight-bold;
+  text-decoration: none;
   transition-duration: ($transition-duration-base * 1);
 
   &::before {
