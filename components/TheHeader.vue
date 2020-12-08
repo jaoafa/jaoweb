@@ -176,7 +176,7 @@ $header-border-width-desktop: 6px;
   position: fixed;
   z-index: 100;
   width: 100%;
-  background: $color-white;
+  background-color: $color-white;
 
   // Diagonal orange line under the header
   &::before {
@@ -187,7 +187,7 @@ $header-border-width-desktop: 6px;
     width: ($size-base * 32);
     height: $header-border-width-mobile;
     content: '';
-    background: $color-primary;
+    background-color: $color-primary;
     transform: rotate(-30deg);
     transform-origin: right top;
 
@@ -204,7 +204,7 @@ $header-border-width-desktop: 6px;
     width: 100%;
     height: $header-border-width-mobile;
     content: '';
-    background: $color-primary;
+    background-color: $color-primary;
 
     @include bp(md) {
       top: $header-main-height-desktop + 7px;
@@ -297,7 +297,7 @@ $header-border-width-desktop: 6px;
       width: 100%;
       height: 2px;
       content: '';
-      background: $color-gray-1;
+      background-color: $color-gray-1;
       transition-duration: ($transition-duration-base * 1);
     }
     &::before {
@@ -307,7 +307,7 @@ $header-border-width-desktop: 6px;
       bottom: 4px;
     }
     &.active {
-      background: transparent;
+      background-color: transparent;
 
       &::before {
         transform: translate(0, 7px) rotateZ(45deg);
