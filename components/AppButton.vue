@@ -8,7 +8,6 @@
     @click="click"
   >
     <span class="app-button__content">
-      <app-icon v-if="icon" class="app-button__icon" :icon="icon" />
       <slot />
     </span>
   </component>
@@ -27,7 +26,7 @@ export default {
       default: '',
       type: String,
     },
-    icon: {
+    to: {
       default: '',
       type: String,
     },
@@ -35,28 +34,34 @@ export default {
       default: false,
       type: Boolean,
     },
-    outlined: {
-      default: false,
-      type: Boolean,
-    },
     small: {
       default: false,
       type: Boolean,
     },
-    to: {
-      default: '',
-      type: String,
+    icon: {
+      default: false,
+      type: Boolean,
+    },
+    outlined: {
+      default: false,
+      type: Boolean,
+    },
+    rounded: {
+      default: false,
+      type: Boolean,
     },
   },
   computed: {
     classes() {
       return {
         'app-button': true,
-        [`app-button--color--${this.color}`]: true,
+        'app-button--icon': this.icon,
         'app-button--size--large': this.large,
         'app-button--size--small': this.small,
         'app-button--size--default': !this.large && !this.small,
         'app-button--outlined': this.outlined,
+        'app-button--rounded': this.rounded,
+        [`app-button--color--${this.color}`]: true,
       }
     },
     tag() {
@@ -88,19 +93,16 @@ $app-button-sizes: (
     'height': $size-base * 6,
     'padding': $size-base * 3,
     'text-size': $font-size-base,
-    'icon-size': $font-size-l2,
   ),
   small: (
     'height': $size-base * 3.5,
     'padding': $size-base * 1,
     'text-size': $font-size-s4,
-    'icon-size': $font-size-base,
   ),
   default: (
     'height': $size-base * 4,
     'padding': $size-base * 2,
     'text-size': $font-size-s2,
-    'icon-size': $font-size-l1,
   ),
 );
 
@@ -114,6 +116,15 @@ $app-button-colors: (
     'outlined-hover-text': $color-gray-1,
     'outlined-hover-background': $color-primary,
   ),
+  dark: (
+    'text': $color-white,
+    'background': $color-black,
+    'hover': $color-gray-2,
+    'outlined-text': $color-black,
+    'outlined-border': $color-black,
+    'outlined-hover-text': $color-white,
+    'outlined-hover-background': $color-black,
+  ),
 );
 
 .app-button {
@@ -124,26 +135,32 @@ $app-button-colors: (
   text-decoration: none;
   transition-duration: ($transition-duration-base * 1);
 
-  &::before {
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    width: 0;
-    height: 0;
-    content: '';
-    border: solid 6px transparent;
-    border-bottom-color: $color-white;
-    transform: rotate(-45deg);
-  }
-
   @each $name, $size in $app-button-sizes {
     &--size--#{$name} {
+      min-width: map-get($size, 'height');
       height: map-get($size, 'height');
-      padding: 0 map-get($size, 'padding');
-      font-size: map-get($size, 'text-size');
 
-      .app-button__icon {
-        font-size: map-get($size, 'icon-size');
+      &.app-button--icon {
+        font-size: (map-get($size, 'text-size') * 1.5);
+      }
+
+      &:not(.app-button--icon) {
+        padding: 0 map-get($size, 'padding');
+        font-size: map-get($size, 'text-size');
+      }
+
+      &:not(.app-button--rounded) {
+        &::before {
+          position: absolute;
+          top: -4px;
+          left: -4px;
+          width: 0;
+          height: 0;
+          content: '';
+          border: solid 6px transparent;
+          border-bottom-color: $color-white;
+          transform: rotate(-45deg);
+        }
       }
     }
   }
@@ -153,12 +170,9 @@ $app-button-colors: (
       color: map-get($color, 'text');
       background: map-get($color, 'background');
       border-color: map-get($color, 'outlined-border');
-      box-shadow: 2px 2px $color-white,
-        3px 3px 0 1px map-get($color, 'background');
 
       &:hover {
         background: map-get($color, 'hover');
-        box-shadow: 2px 2px $color-white, 3px 3px 0 1px map-get($color, 'hover');
       }
 
       &.app-button--outlined {
@@ -169,6 +183,16 @@ $app-button-colors: (
           background: map-get($color, 'outlined-hover-background');
         }
       }
+
+      &:not(.app-button--rounded) {
+        box-shadow: 2px 2px $color-white,
+          3px 3px 0 1px map-get($color, 'background');
+
+        &:hover {
+          box-shadow: 2px 2px $color-white,
+            3px 3px 0 1px map-get($color, 'hover');
+        }
+      }
     }
   }
 
@@ -177,14 +201,14 @@ $app-button-colors: (
     border-style: solid;
     border-width: 2px;
   }
+
+  &--rounded {
+    border-radius: 50%;
+  }
 }
 
 .app-button__content {
   display: flex;
   align-items: center;
-}
-
-.app-button__icon {
-  margin: ($size-base * 0.25) ($size-base * 1) 0 0;
 }
 </style>

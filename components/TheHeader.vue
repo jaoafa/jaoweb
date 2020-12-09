@@ -307,7 +307,7 @@ $header-border-width-desktop: 6px;
       bottom: 4px;
     }
     &.active {
-      background-color: transparent;
+      background: transparent;
 
       &::before {
         transform: translate(0, 7px) rotateZ(45deg);

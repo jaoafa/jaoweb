@@ -6,8 +6,21 @@
       <nuxt-link class="the-footer__logo" to="/">
         <app-logo />
       </nuxt-link>
-      <!-- Social Links -->
-      <div class="the-footer__social-links"></div>
+      <!-- Social Link -->
+      <div class="the-footer__social-link">
+        <template v-for="item in socialLinkItems">
+          <app-button
+            :key="item.value"
+            :href="item.href"
+            color="dark"
+            icon
+            large
+            rounded
+          >
+            <app-icon :icon="item.icon" />
+          </app-button>
+        </template>
+      </div>
       <!-- Navigation -->
       <the-footer-navigation
         class="the-footer__navigation"
@@ -29,10 +42,12 @@
 </template>
 
 <script>
+import AppIcon from './AppIcon.vue'
 export default {
+  components: { AppIcon },
   data() {
     return {
-      // NavigationItems
+      // Navigation items
       navigationItems: [
         {
           text: '利用規約',
@@ -67,6 +82,29 @@ export default {
           text: 'Minecraftは、Mojang ABの商標です。',
         },
       ],
+      // Social link items
+      socialLinkItems: [
+        {
+          icon: 'twitter',
+          href: 'https://twitter.com/jaoafa/',
+          value: 'twitter',
+        },
+        {
+          icon: 'instagram',
+          href: 'https://www.instagram.com/jaoafa/',
+          value: 'instagram',
+        },
+        {
+          icon: 'discord',
+          href: 'https://discord.com/invite/YjwYEBk',
+          value: 'discord',
+        },
+        {
+          icon: 'youtube',
+          href: 'https://www.youtube.com/channel/UC92wyJyhqXEMiEROeFJKNKg',
+          value: 'youtube',
+        },
+      ],
     }
   },
   computed: {
@@ -87,19 +125,24 @@ export default {
 
 .the-footer__main {
   display: grid;
-  grid-template-columns: ($size-base * 80) 1fr ($size-base * 23);
+  grid-template-columns: 1fr;
   grid-auto-rows: auto;
-  gap: ($size-base * 4) ($size-base * 3);
+  gap: ($size-base * 3);
   align-items: center;
   max-width: $size-width-max;
   padding: ($size-base * 9) ($size-base * 2) ($size-base * 12);
   margin: auto;
+
+  @include bp(lg) {
+    grid-template-columns: ($size-base * 80) 1fr ($size-base * 26);
+    gap: ($size-base * 4) ($size-base * 3);
+  }
 }
 
 .the-footer__logo {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
-  width: ($size-base * 25);
+  max-width: ($size-base * 25);
   color: inherit;
   transition-duration: ($transition-duration-base * 1);
 
@@ -108,11 +151,17 @@ export default {
   }
 }
 
-.the-footer__social-links {
+.the-footer__social-link {
   display: flex;
-  grid-row: 1 / 2;
-  grid-column: 3 / 4;
+  grid-row: 4 / 5;
+  grid-column: 1 / 2;
   justify-content: space-between;
+  max-width: ($size-base * 26);
+
+  @include bp(lg) {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+  }
 }
 
 .the-footer__navigation {
@@ -128,8 +177,13 @@ export default {
 }
 
 .the-footer__copyright {
-  grid-row: 4 / 5;
+  grid-row: 5 / 6;
   grid-column: 1 / 2;
   font-size: $font-size-s2;
+
+  @include bp(lg) {
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+  }
 }
 </style>

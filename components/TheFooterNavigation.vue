@@ -28,6 +28,7 @@ export default {
 <style lang="scss" scoped>
 .the-footer-navigation__list {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
 }
 

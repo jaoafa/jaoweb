@@ -112,7 +112,7 @@ button {
   overflow: visible;
 }
 button, html [type="button"], [type="reset"], [type="submit"] {
-  -webkit-appearance: button;
+  -webkit-appearance: none;
 }
 button, select {
   text-transform: none;
