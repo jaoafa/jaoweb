@@ -3,6 +3,7 @@
     <the-header />
     <main class="main">
       <Nuxt />
+      <invite-section />
     </main>
     <the-footer />
   </div>

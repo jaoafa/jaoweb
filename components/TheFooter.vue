@@ -130,9 +130,12 @@ export default {
   gap: ($size-base * 3);
   align-items: center;
   max-width: $size-width-max;
-  padding: ($size-base * 9) ($size-base * 2) ($size-base * 12);
+  padding: ($size-base * 8) ($size-base * 2) ($size-base * 10);
   margin: auto;
 
+  @include bp(md) {
+    padding: ($size-base * 9) ($size-base * 3) ($size-base * 12);
+  }
   @include bp(lg) {
     grid-template-columns: ($size-base * 80) 1fr ($size-base * 26);
     gap: ($size-base * 4) ($size-base * 3);

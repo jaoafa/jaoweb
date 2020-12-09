@@ -77,7 +77,7 @@ export default {
       if (this.href.startsWith('#')) {
         this.scrollSmooth()
       }
-      this.$emit('change', event)
+      this.$emit('click', event)
     },
     scrollSmooth() {
       const cancelScroll = VueScrollTo.scrollTo(this.href, 200)

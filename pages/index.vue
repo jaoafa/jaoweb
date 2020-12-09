@@ -3,7 +3,7 @@
     <!-- Hero section -->
     <section class="hero-section">
       <div class="hero-section__image-container">
-        <img :src="heroSection.imageUrl" />
+        <img :src="heroSection.imageUrl" loading="lazy" />
       </div>
       <div class="hero-section__photographer-name">
         <span>Photo by {{ heroSection.photographerName }}</span>
