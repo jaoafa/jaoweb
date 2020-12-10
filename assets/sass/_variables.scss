@@ -6,6 +6,8 @@
 // --------------------------------------------------------------------------------
 $size-base: 8px;
 $size-width-max: 1248px;
+$size-width-mid: 1072px;
+$size-width-min: 848px;
 
 // Fonts
 // --------------------------------------------------------------------------------
@@ -54,3 +56,4 @@ $color-link: #0080ff;
 $color-background-base: #fff7ea;
 
 $color-brand-discord: #7289da;
+$color-bland-discord-light: lighten($color-brand-discord, 10%);

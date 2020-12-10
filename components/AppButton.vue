@@ -133,6 +133,15 @@ $app-button-colors: (
     'outlined-hover-text': $color-white,
     'outlined-hover-background': $color-black,
   ),
+  discord: (
+    'text': $color-white,
+    'background': $color-brand-discord,
+    'hover': $color-bland-discord-light,
+    'outlined-text': $color-brand-discord,
+    'outlined-border': $color-brand-discord,
+    'outlined-hover-text': $color-white,
+    'outlined-hover-background': $color-brand-discord,
+  ),
 );
 
 .app-button {

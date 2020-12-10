@@ -19,6 +19,7 @@ export default {}
 }
 body {
   font-family: $font-family-base;
+  font-size: $font-size-base;
   line-height: $font-height-base;
   color: $color-gray-1;
   background: $color-background-base;

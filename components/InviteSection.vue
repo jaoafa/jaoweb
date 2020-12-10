@@ -66,7 +66,7 @@ export default {
 }
 
 .invite-section__main {
-  max-width: 1072px;
+  max-width: $size-width-mid;
   padding: ($size-base * 9) ($size-base * 3);
   margin: auto;
 }
@@ -83,7 +83,7 @@ export default {
 
 .invite-section__body {
   position: relative;
-  max-width: 728px;
+  max-width: $size-width-min;
   padding: ($size-base * 6) ($size-base * 3) ($size-base * 4);
   margin: ($size-base * 5) auto 0;
   border: solid 12px $color-white;
@@ -124,12 +124,9 @@ export default {
   grid-auto-rows: auto;
   gap: ($size-base * 1) ($size-base * 4);
   align-items: center;
-  font-size: $font-size-s2;
+  font-size: $font-size-base;
   font-weight: $font-weight-bold;
 
-  @include bp(sm) {
-    font-size: $font-size-base;
-  }
   @include bp(md) {
     grid-template-columns: ($size-base * 16) 1fr;
     gap: ($size-base * 2) ($size-base * 4);
@@ -162,14 +159,6 @@ export default {
     background-color: $color-white;
   }
 }
-
-// .invite-section__copy {
-//   display: none;
-
-//   @include bp(md) {
-//     display: inline-flex;
-//   }
-// }
 
 .invite-section__text {
   margin-top: ($size-base * 2);
