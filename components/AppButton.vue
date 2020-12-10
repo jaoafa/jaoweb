@@ -18,34 +18,42 @@ import VueScrollTo from 'vue-scrollto'
 
 export default {
   props: {
+    // ボタン色
     color: {
       default: 'primary',
       type: String,
     },
+    // 外部リンク
     href: {
       default: '',
       type: String,
     },
+    // 内部リンク
     to: {
       default: '',
       type: String,
     },
+    // ボタンサイズ：Large
     large: {
       default: false,
       type: Boolean,
     },
+    // ボタンサイズ：Small
     small: {
       default: false,
       type: Boolean,
     },
+    // アイコン用デザインを適用
     icon: {
       default: false,
       type: Boolean,
     },
+    // 枠線を追加し背景色を透明にする
     outlined: {
       default: false,
       type: Boolean,
     },
+    // 円形のボタンにする
     rounded: {
       default: false,
       type: Boolean,
@@ -135,6 +143,30 @@ $app-button-colors: (
   text-decoration: none;
   transition-duration: ($transition-duration-base * 1);
 
+  &::before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: -1;
+    display: none;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    content: '';
+    background-color: transparent;
+  }
+  &::after {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+    border: solid 6px transparent;
+    border-bottom-color: $color-white;
+    transform: rotate(-45deg);
+  }
+
   @each $name, $size in $app-button-sizes {
     &--size--#{$name} {
       min-width: map-get($size, 'height');
@@ -143,24 +175,9 @@ $app-button-colors: (
       &.app-button--icon {
         font-size: (map-get($size, 'text-size') * 1.5);
       }
-
       &:not(.app-button--icon) {
         padding: 0 map-get($size, 'padding');
         font-size: map-get($size, 'text-size');
-      }
-
-      &:not(.app-button--rounded) {
-        &::before {
-          position: absolute;
-          top: -4px;
-          left: -4px;
-          width: 0;
-          height: 0;
-          content: '';
-          border: solid 6px transparent;
-          border-bottom-color: $color-white;
-          transform: rotate(-45deg);
-        }
       }
     }
   }
@@ -185,12 +202,16 @@ $app-button-colors: (
       }
 
       &:not(.app-button--rounded) {
-        box-shadow: 2px 2px $color-white,
-          3px 3px 0 1px map-get($color, 'background');
-
+        &::before {
+          display: block;
+          border-right: solid 2px map-get($color, 'background');
+          border-bottom: solid 2px map-get($color, 'background');
+        }
         &:hover {
-          box-shadow: 2px 2px $color-white,
-            3px 3px 0 1px map-get($color, 'hover');
+          &::before {
+            border-right-color: map-get($color, 'hover');
+            border-bottom-color: map-get($color, 'hover');
+          }
         }
       }
     }
@@ -204,6 +225,10 @@ $app-button-colors: (
 
   &--rounded {
     border-radius: 50%;
+
+    &::after {
+      display: none;
+    }
   }
 }
 

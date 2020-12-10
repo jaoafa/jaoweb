@@ -37,7 +37,7 @@
 
       <!-- Login button -->
       <li class="the-header-navigation__item">
-        <app-button to="/login">ログイン</app-button>
+        <app-button to="/login" background-color="#000">ログイン</app-button>
       </li>
     </ul>
   </nav>

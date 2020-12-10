@@ -3,10 +3,10 @@
     <!-- Hero section -->
     <section class="hero-section">
       <div class="hero-section__image-container">
-        <img :src="heroSection.imageUrl" loading="lazy" />
+        <img :src="heroImage.url" loading="lazy" />
       </div>
       <div class="hero-section__photographer-name">
-        <span>Photo by {{ heroSection.photographerName }}</span>
+        <span>Photo by {{ heroImage.photographerName }}</span>
       </div>
     </section>
     <!-- Intro section -->
@@ -22,8 +22,8 @@
 export default {
   data() {
     return {
-      heroSection: {
-        imageUrl: '/img/main-visual.jpg',
+      heroImage: {
+        url: '/img/main-visual.jpg',
         photographerName: 'Zakuro',
       },
     }

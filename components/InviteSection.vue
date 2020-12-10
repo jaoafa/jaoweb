@@ -77,6 +77,7 @@ export default {
 
   @include bp(md) {
     font-size: $font-size-l4;
+    text-align: left;
   }
 }
 
