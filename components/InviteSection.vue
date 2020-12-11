@@ -23,7 +23,9 @@
             </app-button>
           </dd>
           <dt class="invite-section__item-term">バージョン</dt>
-          <dd class="invite-section__item-description">{{ serverVersion }}</dd>
+          <dd class="invite-section__item-description">
+            {{ serverVersion }} (Java Edition)
+          </dd>
         </dl>
         <div class="invite-section__text">
           <p>

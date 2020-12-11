@@ -40,7 +40,7 @@
                 :to="'/community/users/' + item.uuid"
                 class="intro-section__user"
               >
-                <img :src="item.icon" />
+                <img :src="item.icon" loading="lazy" />
               </nuxt-link>
             </template>
           </div>
@@ -51,7 +51,7 @@
                 :to="'/community/users/' + item.uuid"
                 class="intro-section__user"
               >
-                <img :src="item.icon" />
+                <img :src="item.icon" loading="lazy" />
               </nuxt-link>
             </template>
           </div>
@@ -207,13 +207,25 @@ export default {
   }
 }
 
+// Intro section
 .intro-section__main {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   max-width: $size-width-mid;
-  padding: ($size-base * 12) ($size-base * 3);
+  padding: ($size-base * 9) ($size-base * 2);
   margin: auto;
+  text-align: center;
+
+  @include bp(md) {
+    flex-wrap: nowrap;
+    padding: ($size-base * 12) ($size-base * 3);
+    text-align: left;
+  }
+  @include bp(lg) {
+    justify-content: space-between;
+  }
 }
 
 .intro-section__catchcopy {
@@ -222,14 +234,28 @@ export default {
   text-align: center;
 
   @include bp(md) {
-    font-size: $font-size-l4;
     text-align: left;
+  }
+  @include bp(lg) {
+    font-size: $font-size-l4;
+  }
+}
+
+.intro-section__text-container {
+  width: 100%;
+
+  @include bp(md) {
+    width: auto;
   }
 }
 
 .intro-section__text {
   max-width: ($size-base * 44);
-  margin: ($size-base * 5) 0 ($size-base * 3);
+  margin: ($size-base * 3) auto ($size-base * 4);
+
+  @include bp(md) {
+    margin: ($size-base * 3) 0 ($size-base * 4);
+  }
 }
 
 .intro-section__members-container {
@@ -238,18 +264,36 @@ export default {
   grid-template-columns: 1fr;
   gap: ($size-base * 2);
   justify-items: center;
+  width: 100%;
+  margin-top: ($size-base * 8);
   text-align: center;
+
+  @include bp(md) {
+    width: auto;
+    margin-top: 0;
+  }
 }
 
 .intro-section__greeting {
   position: relative;
-  width: ($size-base * 28);
-  margin-bottom: ($size-base * 4);
-  font-size: $font-size-l3;
+  width: ($size-base * 13);
+  padding: ($size-base * 1) 0;
+  margin-bottom: ($size-base * 2);
+  font-size: $font-size-l1;
   font-weight: $font-weight-bold;
   line-height: 1.5;
   border: solid 4px $color-gray-1;
   border-radius: 8px;
+
+  @include bp(sm) {
+    width: ($size-base * 20);
+    margin-bottom: ($size-base * 4);
+    font-size: $font-size-l2;
+  }
+  @include bp(lg) {
+    width: ($size-base * 28);
+    font-size: $font-size-l3;
+  }
 
   &::before,
   &::after {
@@ -280,15 +324,29 @@ export default {
 }
 
 .intro-section__user {
-  width: ($size-base * 10);
+  width: ($size-base * 5);
   transition-duration: ($transition-duration-base * 1);
+
+  @include bp(sm) {
+    width: ($size-base * 10);
+  }
+  @include bp(md) {
+    width: ($size-base * 6);
+  }
+  @include bp(lg) {
+    width: ($size-base * 10);
+  }
 
   &:hover {
     opacity: 0.8;
   }
 
   & ~ & {
-    margin-left: ($size-base * 3);
+    margin-left: ($size-base * 1);
+
+    @include bp(sm) {
+      margin-left: ($size-base * 3);
+    }
   }
 
   img {

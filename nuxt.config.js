@@ -6,6 +6,9 @@ export default {
   head: {
     titleTemplate: '%s｜jao Minecraft Server',
     title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      lang: 'ja',
+    },
     meta: [
       { charset: 'utf-8' },
       { hid: 'description', name: 'description', content: '' },
