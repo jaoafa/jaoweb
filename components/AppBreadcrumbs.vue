@@ -54,31 +54,38 @@ export default {
 .app-breadcrumbs__list {
   display: inline-flex;
   flex-wrap: wrap;
-  font-size: $font-size-s1;
+  font-size: $font-size-s3;
   list-style: none;
+
+  @include bp(md) {
+    font-size: $font-size-s1;
+  }
 }
 
 .app-breadcrumbs__chevron {
   display: none;
+  line-height: 1;
 }
 
 .app-breadcrumbs__item {
   display: inline-flex;
   align-items: baseline;
+  margin-right: ($size-base * 0.5);
 
+  &:last-child {
+    font-weight: $font-weight-bold;
+  }
   & ~ & {
-    margin-left: ($size-base * 1);
-
     .app-breadcrumbs__chevron {
       display: block;
-      margin-right: ($size-base * 1);
+      margin-right: ($size-base * 0.5);
       font-size: $font-size-base;
     }
   }
 }
 
 .app-breadcrumbs__link {
-  color: $color-link;
+  color: $color-gray-1;
   text-decoration: underline;
 
   &:hover {
