@@ -68,7 +68,7 @@ export default {
   plugins: [],
   components: true,
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
-  modules: ['@nuxtjs/axios', '@nuxtjs/style-resources'],
+  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/style-resources'],
   axios: {},
   styleResources: {
     scss: ['@/assets/sass/_variables.scss', '@/assets/sass/_mixins.scss'],
