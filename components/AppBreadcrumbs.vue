@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-breadcrumbs {
-  padding: ($size-base * 4) 0;
+  width: 100%;
 }
 
 .app-breadcrumbs__list {

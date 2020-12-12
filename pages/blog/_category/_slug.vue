@@ -11,7 +11,9 @@
             toc3: link.depth === 3,
           }"
         >
-          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+          <a :href="`#${link.id}`" @click.prevent="scrollSmooth('#' + link.id)">
+            {{ link.text }}
+          </a>
         </li>
       </ul>
       <nuxt-content :document="article" />
@@ -20,6 +22,8 @@
 </template>
 
 <script>
+import VueScrollTo from 'vue-scrollto'
+
 export default {
   async asyncData({ $content, params, error }) {
     const { category, slug } = params
@@ -67,12 +71,19 @@ export default {
       ]
     },
   },
+  methods: {
+    scrollSmooth(to) {
+      const cancelScroll = VueScrollTo.scrollTo(to, 200, { offset: -100 })
+      return cancelScroll
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .page-article {
   max-width: $size-width-min;
+  padding: ($size-base * 4) 0 ($size-base * 24);
   margin: auto;
 }
 </style>
