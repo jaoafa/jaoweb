@@ -1,4 +1,7 @@
-# 1.md
+---
+title: ブログ記事サンプル
+category: お知らせ
+---
 
 These texts are partly borrowed from the [GitHub Markdown CSS demo](https://sindresorhus.com/github-markdown-css/) and modified for use. Thank you.
 
