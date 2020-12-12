@@ -2,6 +2,8 @@
 
 [jao Minecraft Server](https://jaoafa.com) 公式Webサイトのリポジトリ。
 
+- Figma: https://www.figma.com/file/TXrE2yivKoKYBl0OsDeV73/jaoweb
+
 ## Build Setup
 
 ```bash
