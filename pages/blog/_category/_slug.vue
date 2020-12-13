@@ -4,12 +4,16 @@
       <app-breadcrumbs :items="breadcrumbs" />
     </div>
     <article class="page-article">
-      <header>
-        <h1 class="page-title">{{ article.title }}</h1>
-      </header>
+      <article-header
+        :title="_article.title"
+        category="お知らせ"
+        :author="_article.author"
+        :created-at="_article.createdAt"
+        :updated-at="_article.updatedAt"
+      />
       <ul>
         <li
-          v-for="link of article.toc"
+          v-for="link of _article.toc"
           :key="link.id"
           :class="{
             toc2: link.depth === 2,
@@ -21,7 +25,7 @@
           </a>
         </li>
       </ul>
-      <nuxt-content :document="article" />
+      <nuxt-content :document="_article" />
     </article>
   </div>
 </template>
@@ -48,6 +52,28 @@ export default {
     return {}
   },
   computed: {
+    _article() {
+      const article = { ...this.article }
+      if (article.createdAt) {
+        const createdAt = new Date(article.createdAt)
+        article.createdAt =
+          createdAt.getFullYear() +
+          '-' +
+          (createdAt.getMonth() + 1) +
+          '-' +
+          createdAt.getDate()
+      }
+      if (article.updatedAt) {
+        const updatedAt = new Date(article.updatedAt)
+        article.updatedAt =
+          updatedAt.getFullYear() +
+          '-' +
+          (updatedAt.getMonth() + 1) +
+          '-' +
+          updatedAt.getDate()
+      }
+      return article
+    },
     breadcrumbs() {
       return [
         {
@@ -63,7 +89,7 @@ export default {
         {
           disabled: false,
           to: this.category ? '/blog/' + this.category : '',
-          text: this.article.category,
+          text: this._article.category,
         },
         {
           disabled: true,
@@ -71,7 +97,7 @@ export default {
             this.category && this.slug
               ? '/blog/' + this.category + '/' + this.slug
               : '',
-          text: this.article.title,
+          text: this._article.title,
         },
       ]
     },
@@ -111,14 +137,5 @@ export default {
 .page-article {
   max-width: $size-width-min;
   margin: auto;
-}
-
-.page-title {
-  font-size: $font-size-l3;
-  line-height: 1.25;
-
-  @include bp(md) {
-    font-size: $font-size-l4;
-  }
 }
 </style>

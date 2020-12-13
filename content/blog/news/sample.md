@@ -1,6 +1,12 @@
 ---
-title: ブログ記事サンプル
-category: お知らせ
+title: "ブログ記事サンプル"
+category: "お知らせ"
+author:
+   name: "Hiratake"
+   uuid: "39cf878b-ef0b-44fc-a2c6-de3d540a4728"
+   bio: "いつも語彙力を溶かしている、サーバの副管理人です。\nウェブサイトのデザイン、マークアップ、フロント部分のプログラムとかやります。"
+createdAt: 2020-12-13
+updatedAt: 2020-12-13
 ---
 
 These texts are partly borrowed from the [GitHub Markdown CSS demo](https://sindresorhus.com/github-markdown-css/) and modified for use. Thank you.
