@@ -2,13 +2,62 @@ import Sass from 'sass'
 import Fiber from 'fibers'
 import Webpack from 'webpack'
 
+const baseName = process.env.BASE_NAME || 'jao Minecraft Server'
+const baseUrl = process.env.BASE_URL || 'https://jaoafa.com'
+const baseImage = process.env.BASE_IMAGE || '/img/jao.png'
+const baseDir = process.env.BASE_DIR || '/'
+const baseDescription =
+  process.env.BASE_DESCRIPTION ||
+  'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。'
+
 export default {
+  env: {
+    baseName,
+    baseDescription,
+    baseUrl,
+    baseImage,
+  },
+  router: {
+    base: baseDir,
+  },
+  plugins: [],
+  components: true,
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
+  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/style-resources'],
+  content: {
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-atom-dark.css',
+      },
+    },
+  },
+  axios: {},
+  styleResources: {
+    scss: ['@/assets/sass/_variables.scss', '@/assets/sass/_mixins.scss'],
+  },
+  css: ['@/assets/sass/_reset.scss'],
+  build: {
+    loaders: {
+      scss: {
+        implementation: Sass,
+        sassOptions: {
+          fiber: Fiber,
+        },
+      },
+    },
+    plugins: [
+      new Webpack.ProvidePlugin({
+        _: 'lodash',
+      }),
+    ],
+  },
   head: {
-    titleTemplate: '%s｜jao Minecraft Server',
-    title: process.env.npm_package_name || '',
     htmlAttrs: {
       lang: 'ja',
+      prefix: 'og: http://ogp.me/ns#',
     },
+    titleTemplate: '%s｜' + baseName,
+    title: process.env.npm_package_name || '',
     meta: [
       {
         charset: 'utf-8',
@@ -19,11 +68,11 @@ export default {
       },
       {
         name: 'apple-mobile-web-app-title',
-        content: 'jao Minecraft Server',
+        content: baseName,
       },
       {
         name: 'application-name',
-        content: 'jao Minecraft Server',
+        content: baseName,
       },
       {
         name: 'msapplication-TileColor',
@@ -40,13 +89,12 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content:
-          'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。',
+        content: baseDescription,
       },
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'jao Minecraft Server',
+        content: baseName,
       },
       {
         hid: 'og:type',
@@ -56,23 +104,22 @@ export default {
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://jaoafa.com',
+        content: baseUrl,
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'jao Minecraft Server',
+        content: baseName,
       },
       {
         hid: 'og:description',
         property: 'og:description',
-        content:
-          'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。',
+        content: baseDescription,
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://jaoafa.com/img/jao.png',
+        content: baseUrl + baseImage,
       },
       {
         hid: 'twitter:card',
@@ -128,37 +175,6 @@ export default {
         rel: 'stylesheet',
         href: 'https://use.typekit.net/ibc0rnp.css',
       },
-    ],
-  },
-  css: ['@/assets/sass/_reset.scss'],
-  plugins: [],
-  components: true,
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
-  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/style-resources'],
-  content: {
-    markdown: {
-      prism: {
-        theme: 'prism-themes/themes/prism-atom-dark.css',
-      },
-    },
-  },
-  axios: {},
-  styleResources: {
-    scss: ['@/assets/sass/_variables.scss', '@/assets/sass/_mixins.scss'],
-  },
-  build: {
-    loaders: {
-      scss: {
-        implementation: Sass,
-        sassOptions: {
-          fiber: Fiber,
-        },
-      },
-    },
-    plugins: [
-      new Webpack.ProvidePlugin({
-        _: 'lodash',
-      }),
     ],
   },
 }

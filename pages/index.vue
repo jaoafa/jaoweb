@@ -140,7 +140,7 @@ export default {
   head() {
     return {
       titleTemplate: null,
-      title: 'jao Minecraft Server',
+      title: process.env.baseName,
       meta: [
         {
           hid: 'og:type',

@@ -42,9 +42,47 @@ export default {
     return {}
   },
   head() {
+    const article = this.article
+    const meta = []
+    if (article.description) {
+      if (article.description.length > 80) {
+        article.description = article.description.substr(0, 80) + '...'
+      }
+      meta.push({
+        hid: 'description',
+        name: 'description',
+        content: article.description,
+      })
+      meta.push({
+        hid: 'og:description',
+        property: 'og:description',
+        content: article.description,
+      })
+    }
+    if (article.title) {
+      meta.push({
+        hid: 'og:title',
+        property: 'og:title',
+        content: article.title,
+      })
+    }
+    if (article.path) {
+      meta.push({
+        hid: 'og:url',
+        property: 'og:url',
+        content: process.env.baseUrl + article.path,
+      })
+    }
+    if (article.image) {
+      meta.push({
+        hid: 'og:image',
+        property: 'og:image',
+        content: article.image,
+      })
+    }
     return {
       title: this._article.title,
-      meta: this.meta,
+      meta,
     }
   },
   computed: {
@@ -68,49 +106,10 @@ export default {
           '-' +
           updatedAt.getDate()
       }
+      if (!article.image) {
+        article.image = process.env.baseImage
+      }
       return article
-    },
-    meta() {
-      const article = this._article
-      const meta = []
-      if (article.description) {
-        if (article.description.length > 80) {
-          article.description = article.description.substr(0, 80) + '...'
-        }
-        meta.push({
-          hid: 'description',
-          name: 'description',
-          content: article.description,
-        })
-        meta.push({
-          hid: 'og:description',
-          property: 'og:description',
-          content:
-            'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。',
-        })
-      }
-      if (article.title) {
-        meta.push({
-          hid: 'og:title',
-          property: 'og:title',
-          content: article.title,
-        })
-      }
-      if (article.path) {
-        meta.push({
-          hid: 'og:url',
-          property: 'og:url',
-          content: 'https://jaoafa.com' + article.path,
-        })
-      }
-      if (article.image) {
-        meta.push({
-          hid: 'og:image',
-          property: 'og:image',
-          content: article.image,
-        })
-      }
-      return meta
     },
     breadcrumbs() {
       return [
