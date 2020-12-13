@@ -1,9 +1,9 @@
 <template>
   <div class="page">
-    <div class="page-breadcrumbs">
+    <div class="page__breadcrumbs">
       <app-breadcrumbs :items="breadcrumbs" />
     </div>
-    <article class="page-article">
+    <article class="page__article">
       <article-header
         :title="_article.title"
         category="お知らせ"
@@ -12,28 +12,12 @@
         :created-at="_article.createdAt"
         :updated-at="_article.updatedAt"
       />
-      <ul>
-        <li
-          v-for="link of _article.toc"
-          :key="link.id"
-          :class="{
-            toc2: link.depth === 2,
-            toc3: link.depth === 3,
-          }"
-        >
-          <a :href="`#${link.id}`" @click.prevent="scrollSmooth('#' + link.id)">
-            {{ link.text }}
-          </a>
-        </li>
-      </ul>
-      <nuxt-content :document="_article" />
+      <article-body class="page__article-body" :article="article" />
     </article>
   </div>
 </template>
 
 <script>
-import VueScrollTo from 'vue-scrollto'
-
 export default {
   async asyncData({ $content, params, error }) {
     const { category, slug } = params
@@ -103,27 +87,21 @@ export default {
       ]
     },
   },
-  methods: {
-    scrollSmooth(to) {
-      const cancelScroll = VueScrollTo.scrollTo(to, 200, { offset: -100 })
-      return cancelScroll
-    },
-  },
 }
 </script>
 
 <style lang="scss" scoped>
 .page {
-  padding: ($size-base * 4) ($size-base * 2) ($size-base * 24);
+  padding: ($size-base * 3) ($size-base * 2) ($size-base * 24);
 
   @include bp(md) {
     padding: ($size-base * 4) ($size-base * 3) ($size-base * 24);
   }
 }
 
-.page-breadcrumbs {
+.page__breadcrumbs {
   max-width: $size-width-min;
-  padding-bottom: ($size-base * 1);
+  padding-bottom: ($size-base * 2);
   margin: auto;
 
   @include bp(md) {
@@ -135,8 +113,16 @@ export default {
   }
 }
 
-.page-article {
+.page__article {
   max-width: $size-width-min;
   margin: auto;
+}
+
+.page__article-body {
+  margin-top: ($size-base * 3);
+
+  @include bp(md) {
+    margin-top: ($size-base * 5);
+  }
 }
 </style>

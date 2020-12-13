@@ -93,15 +93,21 @@ export default {
 
 .article-header__meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-top: ($size-base * 2);
-  font-size: $font-size-s1;
 }
 
 .article-header__item {
   display: inline-flex;
   align-items: center;
-  margin-right: ($size-base * 2);
+  margin-right: ($size-base * 1.5);
+  font-size: $font-size-s2;
+
+  @include bp(md) {
+    margin-right: ($size-base * 2);
+    font-size: $font-size-s1;
+  }
 
   &:last-child {
     margin-right: 0;
@@ -118,9 +124,13 @@ export default {
 
 .article-header__eyecatch {
   position: relative;
-  margin-top: ($size-base * 4);
+  margin-top: ($size-base * 2);
   background-color: $color-gray-5;
   border-top: solid 4px $color-gray-4;
+
+  @include bp(md) {
+    margin-top: ($size-base * 4);
+  }
 
   &::before {
     display: block;
