@@ -1,26 +1,10 @@
 <template>
   <div class="article-body">
-    <ul>
-      <li
-        v-for="link of article.toc"
-        :key="link.id"
-        :class="{
-          toc2: link.depth === 2,
-          toc3: link.depth === 3,
-        }"
-      >
-        <a :href="`#${link.id}`" @click.prevent="scrollSmooth('#' + link.id)">
-          {{ link.text }}
-        </a>
-      </li>
-    </ul>
     <nuxt-content class="article-body__content" :document="article" />
   </div>
 </template>
 
 <script>
-import VueScrollTo from 'vue-scrollto'
-
 export default {
   props: {
     article: {
@@ -29,17 +13,19 @@ export default {
       type: Object,
     },
   },
-  methods: {
-    scrollSmooth(to) {
-      const cancelScroll = VueScrollTo.scrollTo(to, 200, { offset: -100 })
-      return cancelScroll
-    },
-  },
 }
 </script>
 
-<style lang="scss" scoped>
-// .article-body {}
+<style lang="scss">
+.article-body__content {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-auto-rows: auto;
+  gap: ($size-base * 2) 0;
+  margin-top: ($size-base * 3);
 
-// .article-body__content {}
+  @include bp(md) {
+    margin-top: ($size-base * 5);
+  }
+}
 </style>

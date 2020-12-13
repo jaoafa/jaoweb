@@ -4,15 +4,20 @@
       <app-breadcrumbs :items="breadcrumbs" />
     </div>
     <article class="page__article">
-      <article-header
-        :title="_article.title"
-        category="お知らせ"
-        :author="_article.author"
-        :image="_article.image"
-        :created-at="_article.createdAt"
-        :updated-at="_article.updatedAt"
-      />
-      <article-body class="page__article-body" :article="article" />
+      <div class="page__article-header">
+        <article-header
+          :title="_article.title"
+          category="お知らせ"
+          :author="_article.author"
+          :image="_article.image"
+          :created-at="_article.createdAt"
+          :updated-at="_article.updatedAt"
+        />
+      </div>
+      <div class="page__article-body">
+        <article-toc :article="article" />
+        <article-body :article="article" />
+      </div>
     </article>
   </div>
 </template>
@@ -92,7 +97,7 @@ export default {
 
 <style lang="scss" scoped>
 .page {
-  padding: ($size-base * 3) ($size-base * 2) ($size-base * 24);
+  padding: ($size-base * 3) ($size-base * 2) ($size-base * 16);
 
   @include bp(md) {
     padding: ($size-base * 4) ($size-base * 3) ($size-base * 24);
