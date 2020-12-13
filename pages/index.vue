@@ -139,7 +139,15 @@ export default {
   },
   head() {
     return {
-      title: 'ホーム',
+      titleTemplate: null,
+      title: 'jao Minecraft Server',
+      meta: [
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website',
+        },
+      ],
     }
   },
 }

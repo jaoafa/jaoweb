@@ -10,14 +10,80 @@ export default {
       lang: 'ja',
     },
     meta: [
-      { charset: 'utf-8' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'apple-mobile-web-app-title', content: 'jao Minecraft Server' },
-      { name: 'application-name', content: 'jao Minecraft Server' },
-      { name: 'msapplication-TileColor', content: '#ffb41d' },
-      { name: 'msapplication-config', content: '/favicons/browserconfig.xml' },
-      { name: 'theme-color', content: '#ffb41d' },
+      {
+        charset: 'utf-8',
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
+      {
+        name: 'apple-mobile-web-app-title',
+        content: 'jao Minecraft Server',
+      },
+      {
+        name: 'application-name',
+        content: 'jao Minecraft Server',
+      },
+      {
+        name: 'msapplication-TileColor',
+        content: '#ffb41d',
+      },
+      {
+        name: 'msapplication-config',
+        content: '/favicons/browserconfig.xml',
+      },
+      {
+        name: 'theme-color',
+        content: '#ffb41d',
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。',
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'jao Minecraft Server',
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'article',
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://jaoafa.com',
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'jao Minecraft Server',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://jaoafa.com/img/jao.png',
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: '@jaoafa',
+      },
     ],
     link: [
       {
