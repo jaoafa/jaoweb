@@ -31,6 +31,9 @@
         </div>
       </template>
     </div>
+    <div class="article-header__eyecatch">
+      <img :src="image" :alt="title" loading="lazy" />
+    </div>
   </header>
 </template>
 
@@ -49,6 +52,10 @@ export default {
     author: {
       default: () => {},
       type: Object,
+    },
+    image: {
+      default: '',
+      type: String,
     },
     createdAt: {
       default: '',
@@ -107,5 +114,28 @@ export default {
   margin-right: ($size-base * 1);
   font-size: $font-size-l1;
   line-height: ($size-base * 2);
+}
+
+.article-header__eyecatch {
+  position: relative;
+  margin-top: ($size-base * 4);
+  background-color: $color-gray-5;
+  border-top: solid 4px $color-gray-4;
+
+  &::before {
+    display: block;
+    width: 100%;
+    padding-top: 52.5%;
+    content: '';
+  }
+
+  img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 </style>

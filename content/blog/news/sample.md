@@ -5,6 +5,7 @@ author:
    name: "Hiratake"
    uuid: "39cf878b-ef0b-44fc-a2c6-de3d540a4728"
    bio: "いつも語彙力を溶かしている、サーバの副管理人です。\nウェブサイトのデザイン、マークアップ、フロント部分のプログラムとかやります。"
+image: "/img/main-visual.jpg"
 createdAt: 2020-12-13
 updatedAt: 2020-12-13
 ---

@@ -8,6 +8,7 @@
         :title="_article.title"
         category="お知らせ"
         :author="_article.author"
+        :image="_article.image"
         :created-at="_article.createdAt"
         :updated-at="_article.updatedAt"
       />
