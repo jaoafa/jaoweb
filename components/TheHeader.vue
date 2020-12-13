@@ -223,7 +223,7 @@ $header-border-width-desktop: 6px;
   height: $header-main-height-mobile;
   padding-left: ($size-base * 2);
   margin: auto;
-  border-bottom: solid 1px $color-gray-5;
+  border-bottom: solid 1px $color-gray-6;
 
   @include bp(md) {
     grid-template-columns: $header-logo-width-tablet 1fr;
@@ -268,7 +268,7 @@ $header-border-width-desktop: 6px;
   justify-self: right;
   width: $header-main-height-mobile;
   height: $header-main-height-mobile;
-  border-left: solid 1px $color-gray-5;
+  border-left: solid 1px $color-gray-6;
 
   @include bp(md) {
     display: none;

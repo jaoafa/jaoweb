@@ -69,6 +69,13 @@ export default {
   components: true,
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
   modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/style-resources'],
+  content: {
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-atom-dark.css',
+      },
+    },
+  },
   axios: {},
   styleResources: {
     scss: ['@/assets/sass/_variables.scss', '@/assets/sass/_mixins.scss'],

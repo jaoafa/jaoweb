@@ -254,7 +254,7 @@ export default {
     text-align: left;
   }
   @include bp(lg) {
-    font-size: $font-size-l4;
+    font-size: $font-size-l5;
   }
 }
 

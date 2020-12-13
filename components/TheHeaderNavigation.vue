@@ -91,7 +91,7 @@ export default {
   user-select: none;
 
   &:hover {
-    background: $color-gray-5;
+    background: $color-gray-6;
   }
   & + & {
     margin-left: ($size-base * 4);

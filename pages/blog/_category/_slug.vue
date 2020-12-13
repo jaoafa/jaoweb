@@ -15,8 +15,8 @@
         />
       </div>
       <div class="page__article-body">
-        <article-toc :article="article" />
-        <article-body :article="article" />
+        <article-toc :article="_article" />
+        <article-body :article="_article" />
       </div>
     </article>
   </div>
@@ -40,6 +40,11 @@ export default {
   },
   data() {
     return {}
+  },
+  head() {
+    return {
+      title: this._article.title,
+    }
   },
   computed: {
     _article() {
@@ -124,10 +129,10 @@ export default {
 }
 
 .page__article-body {
-  margin-top: ($size-base * 3);
+  margin-top: ($size-base * 5);
 
   @include bp(md) {
-    margin-top: ($size-base * 5);
+    margin-top: ($size-base * 7);
   }
 }
 </style>

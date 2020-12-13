@@ -15,7 +15,8 @@ $font-size-base: 14px;
 $font-size-l1: 18px;
 $font-size-l2: 24px;
 $font-size-l3: 32px;
-$font-size-l4: 48px;
+$font-size-l4: 38px;
+$font-size-l5: 48px;
 $font-size-s1: 13px;
 $font-size-s2: 12px;
 $font-size-s3: 11px;
@@ -26,7 +27,8 @@ $font-family-base:
   'Hiragino Kaku Gothic ProN',
   'Yu Gothic',
   'sans-serif';
-$font-family-en: 'Sofia Pro', $font-family-base;
+$font-family-en: 'Sofia Pro', sans-serif;
+$font-family-code: 'Consolas', monospace;
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
@@ -47,8 +49,9 @@ $color-gray-1: #3c3c3c;
 $color-gray-2: #535353;
 $color-gray-3: #727272;
 $color-gray-4: #bdbdbd;
-$color-gray-5: #f0f0f0;
-$color-gray-6: #f8f8f8;
+$color-gray-5: #dadada;
+$color-gray-6: #f0f0f0;
+$color-gray-7: #f8f8f8;
 $color-white: #fff;
 
 $color-link: #0080ff;

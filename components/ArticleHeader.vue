@@ -87,7 +87,7 @@ export default {
   line-height: 1.25;
 
   @include bp(md) {
-    font-size: $font-size-l4;
+    font-size: $font-size-l5;
   }
 }
 
@@ -125,7 +125,7 @@ export default {
 .article-header__eyecatch {
   position: relative;
   margin-top: ($size-base * 2);
-  background-color: $color-gray-5;
+  background-color: $color-gray-6;
   border-top: solid 4px $color-gray-4;
 
   @include bp(md) {

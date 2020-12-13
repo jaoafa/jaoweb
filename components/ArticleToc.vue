@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     scrollSmooth(to) {
-      const cancelScroll = VueScrollTo.scrollTo(to, 200, { offset: -100 })
+      const cancelScroll = VueScrollTo.scrollTo(to, 200, { offset: -88 })
       return cancelScroll
     },
   },
