@@ -4,19 +4,20 @@ import Webpack from 'webpack'
 
 const baseName = process.env.BASE_NAME || 'jao Minecraft Server'
 const baseUrl = process.env.BASE_URL || 'https://jaoafa.com'
-const baseImage = process.env.BASE_IMAGE || '/img/jao.png'
 const baseDir = process.env.BASE_DIR || '/'
+const baseImage = process.env.BASE_IMAGE || '/img/jao.png'
 const baseDescription =
   process.env.BASE_DESCRIPTION ||
   'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。'
 
 export default {
-  env: {
+  publicRuntimeConfig: {
     baseName,
     baseDescription,
     baseUrl,
     baseImage,
   },
+  privateRuntimeConfig: {},
   router: {
     base: baseDir,
   },

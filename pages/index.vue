@@ -140,7 +140,7 @@ export default {
   head() {
     return {
       titleTemplate: null,
-      title: process.env.baseName,
+      title: this.$config.baseName,
       meta: [
         {
           hid: 'og:type',

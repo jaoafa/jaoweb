@@ -70,7 +70,7 @@ export default {
       meta.push({
         hid: 'og:url',
         property: 'og:url',
-        content: process.env.baseUrl + article.path,
+        content: this.$config.baseUrl + article.path,
       })
     }
     if (article.image) {
@@ -107,7 +107,7 @@ export default {
           updatedAt.getDate()
       }
       if (!article.image) {
-        article.image = process.env.baseImage
+        article.image = this.$config.baseImage
       }
       return article
     },

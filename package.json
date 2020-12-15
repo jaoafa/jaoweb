@@ -20,7 +20,6 @@
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
-    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/style-resources": "^1.0.0",
