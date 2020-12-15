@@ -27,11 +27,15 @@ export default {
   async asyncData({ $content, params, error }) {
     const { category, slug } = params
     let article
+    let authors
     try {
       article = await $content('blog', category, slug).fetch()
+      authors = await $content('authors').fetch()
     } catch (e) {
-      error({ message: 'Article not found.' })
+      error({ statusCode: 404, message: '記事が見つかりません。' })
     }
+    article.author = authors.filter((item) => item.id === article.author)
+    article.author = article.author ? article.author[0] : {}
     return {
       article,
       category,

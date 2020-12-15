@@ -1,9 +1,7 @@
 ---
 title: "ブログ記事サンプル"
 category: "お知らせ"
-author:
-   name: "Hiratake"
-   uuid: "39cf878b-ef0b-44fc-a2c6-de3d540a4728"
+author: "Hirotaisou2012"
 image: "http://localhost:3000/img/jao.png"
 createdAt: 2020-12-13
 updatedAt: 2020-12-15
@@ -321,7 +319,7 @@ Hiratake has poor vocabulary.
 
 ### author
 
-投稿者情報です。名前やアイコン画像などを表示するための情報を設定します。
+投稿者情報です。 `/content/authors.json` の `ID` を設定することで、名前やアイコン画像などの情報を表示できます。
 
 ### createdAt
 
