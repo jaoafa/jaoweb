@@ -7,7 +7,7 @@
       <div class="page__article-header">
         <article-header
           :title="_article.title"
-          category="お知らせ"
+          :category="_article.category"
           :author="_article.author"
           :image="_article.image"
           :created-at="_article.createdAt"
@@ -39,6 +39,16 @@ export default {
           : {}
       } catch (e) {
         throw new Error('Author settings is incorrect.')
+      }
+      try {
+        article.category = await $content(
+          'blog',
+          'categories',
+          category
+        ).fetch()
+        article.category = article.category.name
+      } catch (e) {
+        throw new Error('Category settings is incorrect.')
       }
     } catch (e) {
       if (e.message === 'Page not found.') {

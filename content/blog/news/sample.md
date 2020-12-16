@@ -1,6 +1,5 @@
 ---
 title: "ブログ記事サンプル"
-category: "お知らせ"
 author: "hiratake"
 image: "http://localhost:3000/img/jao.png"
 createdAt: 2020-12-13
