@@ -1,7 +1,7 @@
 ---
 title: "ブログ記事サンプル"
 category: "お知らせ"
-author: "Hirotaisou2012"
+author: "hiratake"
 image: "http://localhost:3000/img/jao.png"
 createdAt: 2020-12-13
 updatedAt: 2020-12-15
@@ -319,7 +319,7 @@ Hiratake has poor vocabulary.
 
 ### author
 
-投稿者情報です。 `/content/authors.json` の `ID` を設定することで、名前やアイコン画像などの情報を表示できます。
+投稿者情報です。 `/content/authors.json` の `slug` を設定することで、名前やアイコン画像などの情報を表示できます。
 
 ### createdAt
 

@@ -27,15 +27,26 @@ export default {
   async asyncData({ $content, params, error }) {
     const { category, slug } = params
     let article
-    let authors
     try {
-      article = await $content('blog', category, slug).fetch()
-      authors = await $content('authors').fetch()
+      try {
+        article = await $content('blog', category, slug).fetch()
+      } catch (e) {
+        throw new Error('Page not found.')
+      }
+      try {
+        article.author = article.author
+          ? await $content('authors', article.author).fetch()
+          : {}
+      } catch (e) {
+        throw new Error('Author settings is incorrect.')
+      }
     } catch (e) {
-      error({ statusCode: 404, message: '記事が見つかりません。' })
+      if (e.message === 'Page not found.') {
+        error({ statusCode: 404, message: e.message })
+      } else {
+        error({ statusCode: 500, message: e.message })
+      }
     }
-    article.author = authors.filter((item) => item.id === article.author)
-    article.author = article.author ? article.author[0] : {}
     return {
       article,
       category,
