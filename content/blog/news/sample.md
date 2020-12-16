@@ -240,6 +240,7 @@ Inline `code` has `back-ticks around` it.
 |heading|heading|heading|
 |:-|:-|:-|
 |item|item|item|
+|item|item|item|
 
 表の各項目は、太字などの装飾をすることができます。
 

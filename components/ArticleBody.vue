@@ -168,6 +168,41 @@ export default {
     }
   }
 
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    @include bp(md) {
+      display: table;
+      overflow-x: auto;
+    }
+
+    tr {
+      &:nth-of-type(even) {
+        background-color: $color-gray-6;
+      }
+    }
+
+    th,
+    td {
+      padding: ($size-base * 1) ($size-base * 2);
+      font-size: $font-size-s1;
+      line-height: 1.25;
+
+      @include bp(md) {
+        padding: ($size-base * 2);
+        word-wrap: break-word;
+      }
+    }
+
+    th {
+      background-color: $color-gray-5;
+    }
+  }
+
   code,
   kbd,
   pre,
