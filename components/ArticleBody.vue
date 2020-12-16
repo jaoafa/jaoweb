@@ -22,10 +22,10 @@ export default {
   grid-template-columns: 100%;
   grid-auto-rows: auto;
   gap: ($size-base * 4) 0;
-  margin-top: ($size-base * 2);
+  margin-top: ($size-base * 5);
 
   @include bp(md) {
-    margin-top: ($size-base * 4);
+    margin-top: ($size-base * 7);
   }
 
   h2,
@@ -82,19 +82,90 @@ export default {
     }
   }
 
-  p {
-    a {
-      color: $color-link;
+  p a {
+    color: $color-link;
 
-      &:hover {
-        text-decoration: none;
-      }
+    &:hover {
+      text-decoration: none;
     }
   }
 
   img {
     display: block;
     width: 100%;
+  }
+
+  ol,
+  ul {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: auto;
+    gap: ($size-base * 1) 0;
+    padding: 0 ($size-base * 1) 0 ($size-base * 5);
+    list-style: none;
+    counter-reset: section;
+
+    @include bp(md) {
+      gap: ($size-base * 2) 0;
+    }
+
+    li {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        right: calc(100% + #{$size-base * 2});
+        display: block;
+      }
+    }
+
+    ol,
+    ul {
+      padding: 0 0 0 ($size-base * 4);
+      margin-top: ($size-base * 1);
+
+      @include bp(md) {
+        padding: 0 0 0 ($size-base * 5);
+        margin-top: ($size-base * 2);
+      }
+    }
+  }
+
+  ol li {
+    &::before {
+      top: 7px;
+      font-size: $font-size-s1;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      white-space: nowrap;
+      content: counters(section, '-') '.';
+      counter-increment: section;
+    }
+  }
+
+  ul li {
+    &::before {
+      top: 10px;
+      width: ($size-base * 1);
+      height: ($size-base * 1);
+      content: '';
+      background-color: $color-gray-1;
+      border: solid 1px $color-gray-1;
+      border-radius: 50%;
+    }
+
+    li {
+      &::before {
+        background-color: transparent;
+      }
+
+      li {
+        &::before {
+          background-color: $color-gray-1;
+          border-radius: 0;
+        }
+      }
+    }
   }
 
   code,
@@ -110,6 +181,34 @@ export default {
     background-color: $color-gray-7;
     border: solid 1px $color-gray-5;
     border-radius: 2px;
+  }
+}
+
+blockquote {
+  padding: ($size-base * 1) ($size-base * 1) ($size-base * 1) ($size-base * 2);
+  border-left: solid 6px $color-gray-5;
+
+  @include bp(md) {
+    padding: ($size-base * 2) ($size-base * 1) ($size-base * 2) ($size-base * 3);
+  }
+
+  p {
+    white-space: pre-wrap;
+  }
+}
+
+hr {
+  position: relative;
+  width: ($size-base * 3);
+  height: ($size-base * 1);
+  margin: ($size-base * 4) auto;
+  background-image: radial-gradient($color-gray-1 30%, transparent 30%);
+  background-repeat: repeat;
+  background-size: ($size-base * 1) ($size-base * 1);
+  border: none;
+
+  @include bp(md) {
+    margin: ($size-base * 7) auto;
   }
 }
 </style>
