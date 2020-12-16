@@ -95,17 +95,17 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: ($size-base * 2);
+  margin-top: ($size-base * 1);
 }
 
 .article-header__item {
   display: inline-flex;
   align-items: center;
-  margin-right: ($size-base * 1.5);
+  margin: ($size-base * 1) ($size-base * 1.5) 0 0;
   font-size: $font-size-s2;
 
   @include bp(md) {
-    margin-right: ($size-base * 2);
+    margin: ($size-base * 1) ($size-base * 2) 0 0;
     font-size: $font-size-s1;
   }
 
