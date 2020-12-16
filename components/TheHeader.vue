@@ -181,7 +181,7 @@ $header-border-width-desktop: 6px;
   // Diagonal orange line under the header
   &::before {
     position: absolute;
-    top: $header-main-height-desktop + 7px;
+    top: $header-main-height-desktop;
     right: calc(100% - #{$header-logo-width-desktop});
     display: none;
     width: ($size-base * 32);
@@ -199,7 +199,7 @@ $header-border-width-desktop: 6px;
   // Horizontal orange line under the header
   &::after {
     position: absolute;
-    top: $header-main-height-mobile + 7px;
+    top: $header-main-height-mobile;
     right: 0;
     width: 100%;
     height: $header-border-width-mobile;
@@ -207,7 +207,7 @@ $header-border-width-desktop: 6px;
     background-color: $color-primary;
 
     @include bp(md) {
-      top: $header-main-height-desktop + 7px;
+      top: $header-main-height-desktop;
       width: calc(100% - #{$header-logo-width-desktop});
       height: $header-border-width-desktop;
     }
