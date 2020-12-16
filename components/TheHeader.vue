@@ -1,5 +1,5 @@
 <template>
-  <header class="the-header">
+  <header :class="classes">
     <!-- Main header area -->
     <div class="the-header__main">
       <!-- Logo -->
@@ -160,6 +160,14 @@ export default {
       navigationMobileState: false,
     }
   },
+  computed: {
+    classes() {
+      return {
+        'the-header': true,
+        'the-header--selected': this.navigationCurrent,
+      }
+    },
+  },
 }
 </script>
 
@@ -211,6 +219,10 @@ $header-border-width-desktop: 6px;
       width: calc(100% - #{$header-logo-width-desktop});
       height: $header-border-width-desktop;
     }
+  }
+
+  &--selected {
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   }
 }
 
