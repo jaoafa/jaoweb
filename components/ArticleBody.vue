@@ -25,7 +25,7 @@ export default {
   margin-top: ($size-base * 5);
 
   @include bp(md) {
-    margin-top: ($size-base * 7);
+    margin-top: ($size-base * 6);
   }
 
   h2,
