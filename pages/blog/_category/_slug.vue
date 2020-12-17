@@ -59,8 +59,6 @@ export default {
     }
     return {
       article,
-      category,
-      slug,
     }
   },
   data() {
@@ -150,15 +148,12 @@ export default {
         },
         {
           disabled: false,
-          to: this.category ? '/blog/' + this.category : '',
+          to: this._article.dir,
           text: this._article.category,
         },
         {
           disabled: true,
-          to:
-            this.category && this.slug
-              ? '/blog/' + this.category + '/' + this.slug
-              : '',
+          to: this._article.path,
           text: this._article.title,
         },
       ]
