@@ -18,6 +18,7 @@
         <article-toc :article="_article" />
         <article-body :article="_article" />
       </div>
+      <article-share :url="_article.path" :title="_article.title" />
     </article>
   </div>
 </template>
@@ -186,6 +187,7 @@ export default {
 }
 
 .page__article {
+  position: relative;
   max-width: $size-width-min;
   margin: auto;
 }
