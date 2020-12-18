@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <!-- Hero section -->
     <section class="hero-section">
       <div class="hero-section__image-container">
