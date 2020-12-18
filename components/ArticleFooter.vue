@@ -11,6 +11,16 @@
       </div>
       <div class="article-footer__author-bio">{{ _author.bio }}</div>
     </div>
+    <div class="article-footer__meta">
+      <div class="article-footer__meta-item">
+        <app-icon icon="calendar" class="article-footer__meta-icon" />
+        公開日：{{ createdAt }}
+      </div>
+      <div class="article-footer__meta-item">
+        <app-icon icon="update" class="article-footer__meta-icon" />
+        更新日：{{ updatedAt }}
+      </div>
+    </div>
   </footer>
 </template>
 
@@ -21,6 +31,15 @@ export default {
       default: () => {},
       required: true,
       type: Object,
+    },
+    createdAt: {
+      default: '',
+      type: String,
+    },
+    updatedAt: {
+      default: '',
+      required: true,
+      type: String,
     },
   },
   computed: {
@@ -43,6 +62,9 @@ export default {
   margin-top: ($size-base * 5);
 
   @include bp(md) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-top: ($size-base * 14);
   }
 }
@@ -52,6 +74,7 @@ export default {
   grid-template-rows: repeat(2, auto);
   grid-template-columns: ($size-base * 10) 1fr;
   gap: ($size-base * 1) ($size-base * 4);
+  max-width: ($size-base * 67);
 }
 
 .article-footer__author-image {
@@ -74,6 +97,21 @@ export default {
 
 .article-footer__author-bio {
   font-size: $font-size-s1;
+  line-height: 1.5;
   white-space: pre-wrap;
+}
+
+.article-footer__meta {
+  font-size: $font-size-s1;
+}
+
+.article-footer__meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.article-footer__meta-icon {
+  margin-right: ($size-base * 1);
+  font-size: $font-size-l1;
 }
 </style>

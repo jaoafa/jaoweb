@@ -17,7 +17,11 @@
       <div class="page__article-body">
         <article-toc :article="_article" />
         <article-body :article="_article" />
-        <article-footer :author="_article.author" />
+        <article-footer
+          :author="_article.author"
+          :created-at="_article.createdAt"
+          :updated-at="_article.updatedAt"
+        />
       </div>
     </article>
   </div>
