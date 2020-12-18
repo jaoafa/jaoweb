@@ -59,22 +59,27 @@ export default {
 
 <style lang="scss" scoped>
 .article-footer {
-  margin-top: ($size-base * 5);
+  margin-top: ($size-base * 8);
 
   @include bp(md) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: ($size-base * 14);
+    margin-top: ($size-base * 10);
   }
 }
 
 .article-footer__author {
   display: grid;
   grid-template-rows: repeat(2, auto);
-  grid-template-columns: ($size-base * 10) 1fr;
-  gap: ($size-base * 1) ($size-base * 4);
+  grid-template-columns: ($size-base * 8) 1fr;
+  gap: 0 ($size-base * 3);
   max-width: ($size-base * 67);
+
+  @include bp(md) {
+    grid-template-columns: ($size-base * 10) 1fr;
+    gap: ($size-base * 1) ($size-base * 4);
+  }
 }
 
 .article-footer__author-image {
@@ -102,7 +107,12 @@ export default {
 }
 
 .article-footer__meta {
+  margin-top: ($size-base * 4);
   font-size: $font-size-s1;
+
+  @include bp(md) {
+    margin-top: 0;
+  }
 }
 
 .article-footer__meta-item {
