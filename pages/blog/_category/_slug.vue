@@ -17,6 +17,7 @@
       <div class="page__article-body">
         <article-toc :article="_article" />
         <article-body :article="_article" />
+        <article-footer :author="_article.author" />
       </div>
     </article>
   </div>
