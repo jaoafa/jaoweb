@@ -66,9 +66,6 @@ export default {
       article,
     }
   },
-  data() {
-    return {}
-  },
   head() {
     const article = this.article
     const meta = []
