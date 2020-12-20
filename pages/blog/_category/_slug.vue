@@ -7,11 +7,8 @@
       <div class="page__article-header">
         <article-header
           :title="_article.title"
-          :category="_article.category"
-          :author="_article.author"
           :image="_article.image"
-          :created-at="_article.createdAt"
-          :updated-at="_article.updatedAt"
+          :meta="meta"
         />
       </div>
       <div class="page__article-body">
@@ -159,6 +156,38 @@ export default {
           text: this._article.title,
         },
       ]
+    },
+    meta() {
+      const article = { ...this._article }
+      const meta = []
+      if (article.author.name) {
+        meta.push({
+          image:
+            'https://crafatar.com/avatars/' +
+            article.author.uuid +
+            '?overlay=true',
+          text: article.author.name,
+        })
+      }
+      if (article.createdAt) {
+        meta.push({
+          icon: 'calendar',
+          text: article.createdAt,
+        })
+      }
+      if (article.updatedAt) {
+        meta.push({
+          icon: 'update',
+          text: article.updatedAt,
+        })
+      }
+      if (article.category) {
+        meta.push({
+          icon: 'tag',
+          text: article.category,
+        })
+      }
+      return meta
     },
   },
 }

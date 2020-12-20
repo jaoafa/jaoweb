@@ -2,7 +2,7 @@
   <header class="article-header">
     <h1 class="article-header__title">{{ title }}</h1>
     <div class="article-header__meta">
-      <template v-for="item in meta">
+      <template v-for="item in _meta">
         <article-meta-item
           :key="item.id"
           :icon="item.icon"
@@ -26,61 +26,21 @@ export default {
       required: true,
       type: String,
     },
-    category: {
-      default: '',
-      type: String,
-    },
-    author: {
-      default: () => {},
-      type: Object,
-    },
     image: {
       default: '',
       type: String,
     },
-    createdAt: {
-      default: '',
-      type: String,
-    },
-    updatedAt: {
-      default: '',
-      required: true,
-      type: String,
+    meta: {
+      default: () => [],
+      type: Array,
     },
   },
   computed: {
-    _author() {
-      const author = { ...this.author }
-      return {
-        name: author.name ? author.name : '',
-        icon: author.uuid
-          ? 'https://crafatar.com/avatars/' + author.uuid + '?overlay=true'
-          : '',
-      }
-    },
-    meta() {
-      return [
-        {
-          id: 1,
-          image: this._author.icon,
-          text: this._author.name,
-        },
-        {
-          id: 2,
-          icon: 'calendar',
-          text: this.createdAt,
-        },
-        {
-          id: 3,
-          icon: 'update',
-          text: this.updatedAt,
-        },
-        {
-          id: 4,
-          icon: 'tag',
-          text: this.category,
-        },
-      ]
+    _meta() {
+      return this.meta.map((item, index) => {
+        item.index = index + 1
+        return item
+      })
     },
   },
 }
