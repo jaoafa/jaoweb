@@ -11,10 +11,12 @@
         />
       </template>
     </div>
-
     <div v-if="image" class="article-header__eyecatch">
       <img :src="image" :alt="title" loading="lazy" />
     </div>
+    <p v-if="description" class="article-header__description">
+      {{ description }}
+    </p>
   </header>
 </template>
 
@@ -24,6 +26,10 @@ export default {
     title: {
       default: '',
       required: true,
+      type: String,
+    },
+    description: {
+      default: '',
       type: String,
     },
     image: {
@@ -71,6 +77,11 @@ export default {
   }
 }
 
+.article-header__description {
+  margin-top: ($size-base * 2);
+  font-size: $font-size-s1;
+}
+
 .article-header__eyecatch {
   position: relative;
   margin-top: ($size-base * 2);
@@ -95,6 +106,10 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  & + .article-header__description {
+    margin-top: ($size-base * 5);
   }
 }
 </style>

@@ -3,7 +3,12 @@
     <div class="page__breadcrumbs">
       <app-breadcrumbs :items="breadcrumbs" />
       <div class="page__collection">
-        <header class="page__collection-header"></header>
+        <div class="page__collection-header">
+          <article-header
+            title="ブログ"
+            description="jaoの世界から、最新情報から旬なネタ、お役立ち情報まで幅広くお届けします。"
+          />
+        </div>
       </div>
     </div>
   </div>
