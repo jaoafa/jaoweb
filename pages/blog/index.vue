@@ -48,7 +48,9 @@ export default {
 
 <style lang="scss" scoped>
 .page {
+  max-width: $size-width-min;
   padding: ($size-base * 3) ($size-base * 2) ($size-base * 16);
+  margin: auto;
 
   @include bp(md) {
     padding: ($size-base * 4) ($size-base * 3) ($size-base * 24);
@@ -56,9 +58,7 @@ export default {
 }
 
 .page__breadcrumbs {
-  max-width: $size-width-min;
   padding-bottom: ($size-base * 2);
-  margin: auto;
 
   @include bp(md) {
     padding-bottom: ($size-base * 3);
@@ -67,10 +67,5 @@ export default {
   @include bp(xl) {
     margin-left: auto;
   }
-}
-
-.page__collection {
-  max-width: $size-width-min;
-  margin: auto;
 }
 </style>
