@@ -14,8 +14,8 @@
     <div v-if="image" class="article-header__eyecatch">
       <img :src="image" :alt="title" loading="lazy" />
     </div>
-    <p v-if="description" class="article-header__description">
-      {{ description }}
+    <p v-if="_description" class="article-header__description">
+      {{ _description }}
     </p>
   </header>
 </template>
@@ -48,6 +48,13 @@ export default {
         return item
       })
     },
+    _description() {
+      let description = this.description
+      if (this.meta.length || this.image) {
+        description = ''
+      }
+      return description
+    },
   },
 }
 </script>
@@ -77,11 +84,6 @@ export default {
   }
 }
 
-.article-header__description {
-  margin-top: ($size-base * 2);
-  font-size: $font-size-s1;
-}
-
 .article-header__eyecatch {
   position: relative;
   margin-top: ($size-base * 2);
@@ -107,9 +109,10 @@ export default {
     height: 100%;
     object-fit: cover;
   }
+}
 
-  & + .article-header__description {
-    margin-top: ($size-base * 5);
-  }
+.article-header__description {
+  margin-top: ($size-base * 2);
+  font-size: $font-size-s1;
 }
 </style>
