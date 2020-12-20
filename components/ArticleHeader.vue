@@ -1,7 +1,7 @@
 <template>
   <header class="article-header">
     <h1 class="article-header__title">{{ title }}</h1>
-    <div class="article-header__meta">
+    <div v-if="meta.length" class="article-header__meta">
       <template v-for="item in _meta">
         <article-meta-item
           :key="item.id"
