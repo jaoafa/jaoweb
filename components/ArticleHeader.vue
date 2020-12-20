@@ -2,35 +2,16 @@
   <header class="article-header">
     <h1 class="article-header__title">{{ title }}</h1>
     <div class="article-header__meta">
-      <template v-if="_author.name">
-        <div class="article-header__item">
-          <img
-            :src="_author.icon"
-            class="article-header__icon"
-            loading="lazy"
-          />
-          <span class="article-header__text">{{ _author.name }}</span>
-        </div>
-      </template>
-      <template v-if="createdAt">
-        <div class="article-header__item">
-          <app-icon icon="calendar" class="article-header__icon" />
-          <span class="article-header__text">{{ createdAt }}</span>
-        </div>
-      </template>
-      <template v-if="updatedAt">
-        <div class="article-header__item">
-          <app-icon icon="update" class="article-header__icon" />
-          <span class="article-header__text">{{ updatedAt }}</span>
-        </div>
-      </template>
-      <template v-if="category">
-        <div class="article-header__item">
-          <app-icon icon="tag" class="article-header__icon" />
-          <span class="article-header__text">{{ category }}</span>
-        </div>
+      <template v-for="item in meta">
+        <article-meta-item
+          :key="item.id"
+          :icon="item.icon"
+          :image="item.image"
+          :text="item.text"
+        />
       </template>
     </div>
+
     <div v-if="image" class="article-header__eyecatch">
       <img :src="image" :alt="title" loading="lazy" />
     </div>
@@ -77,6 +58,30 @@ export default {
           : '',
       }
     },
+    meta() {
+      return [
+        {
+          id: 1,
+          image: this._author.icon,
+          text: this._author.name,
+        },
+        {
+          id: 2,
+          icon: 'calendar',
+          text: this.createdAt,
+        },
+        {
+          id: 3,
+          icon: 'update',
+          text: this.updatedAt,
+        },
+        {
+          id: 4,
+          icon: 'tag',
+          text: this.category,
+        },
+      ]
+    },
   },
 }
 </script>
@@ -96,30 +101,14 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   margin-top: ($size-base * 1);
-}
 
-.article-header__item {
-  display: inline-flex;
-  align-items: center;
-  margin: ($size-base * 1) ($size-base * 1.5) 0 0;
-  font-size: $font-size-s2;
+  & > * {
+    margin: ($size-base * 1) ($size-base * 1.5) 0 0;
 
-  @include bp(md) {
-    margin: ($size-base * 1) ($size-base * 2) 0 0;
-    font-size: $font-size-s1;
+    @include bp(md) {
+      margin-right: ($size-base * 2);
+    }
   }
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-.article-header__icon {
-  width: ($size-base * 2);
-  height: ($size-base * 2);
-  margin-right: ($size-base * 1);
-  font-size: $font-size-l1;
-  line-height: ($size-base * 2);
 }
 
 .article-header__eyecatch {
