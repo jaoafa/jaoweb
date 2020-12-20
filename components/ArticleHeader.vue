@@ -31,7 +31,7 @@
         </div>
       </template>
     </div>
-    <div class="article-header__eyecatch">
+    <div v-if="image" class="article-header__eyecatch">
       <img :src="image" :alt="title" loading="lazy" />
     </div>
   </header>

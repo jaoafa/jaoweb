@@ -132,7 +132,7 @@ export default {
           updatedAt.getDate()
       }
       if (!article.image) {
-        article.image = this.$config.baseImage
+        article.image = ''
       }
       return article
     },
