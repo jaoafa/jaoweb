@@ -2,14 +2,13 @@
   <div class="page">
     <div class="page__breadcrumbs">
       <app-breadcrumbs :items="breadcrumbs" />
-      <div class="page__collection">
-        <div class="page__collection-header">
-          <article-header
-            title="ブログ"
-            description="jaoの世界から、最新情報から旬なネタ、お役立ち情報まで幅広くお届けします。"
-          />
-        </div>
-      </div>
+    </div>
+    <div class="page__collection">
+      <article-header
+        class="page__header"
+        title="ブログ"
+        description="jaoの世界から、最新情報から旬なネタ、お役立ち情報まで幅広くお届けします。"
+      />
     </div>
   </div>
 </template>
@@ -68,5 +67,10 @@ export default {
   @include bp(xl) {
     margin-left: auto;
   }
+}
+
+.page__collection {
+  max-width: $size-width-min;
+  margin: auto;
 }
 </style>

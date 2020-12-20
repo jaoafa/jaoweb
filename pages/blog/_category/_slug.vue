@@ -4,22 +4,22 @@
       <app-breadcrumbs :items="breadcrumbs" />
     </div>
     <article class="page__article">
-      <div class="page__article-header">
-        <article-header
-          :title="_article.title"
-          :image="_article.image"
-          :meta="meta"
-        />
-      </div>
-      <div class="page__article-body">
+      <article-header
+        :title="_article.title"
+        :image="_article.image"
+        :meta="meta"
+        class="page__header"
+      />
+      <div class="page__body">
         <article-toc :article="_article" />
         <article-body :article="_article" />
-        <article-footer
-          :author="_article.author"
-          :created-at="_article.createdAt"
-          :updated-at="_article.updatedAt"
-        />
       </div>
+      <article-footer
+        :author="_article.author"
+        :created-at="_article.createdAt"
+        :updated-at="_article.updatedAt"
+        class="page__footer"
+      />
     </article>
   </div>
 </template>
@@ -221,7 +221,7 @@ export default {
   margin: auto;
 }
 
-.page__article-body {
+.page__body {
   margin-top: ($size-base * 5);
 
   @include bp(md) {
