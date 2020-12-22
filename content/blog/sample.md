@@ -1,5 +1,6 @@
 ---
 title: "ブログ記事サンプル"
+category: "news"
 author: "hiratake"
 image: "http://localhost:3000/img/jao.png"
 createdAt: 2020-12-13
@@ -308,6 +309,12 @@ Hiratake has poor vocabulary.
 `<!--more-->` をMarkdown中に挿入した場合でも、YAMLフロントマターブロック内で「description」が設定されていた場合はYAMLフロントマターブロックで設定したものが優先されます。
 
 何も指定しなかった場合、「ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。」というテキストが設定されます。
+
+### category
+
+記事のカテゴリです。タイトル下に表示されたり、パンくずリストに表示されたりします。
+
+`/content/blog/categories.json` の `slug` を設定することで、カテゴリの情報を表示できます。
 
 ### image
 

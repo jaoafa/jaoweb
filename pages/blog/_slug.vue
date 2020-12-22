@@ -27,11 +27,11 @@
 <script>
 export default {
   async asyncData({ $content, params, error }) {
-    const { category, slug } = params
+    const { slug } = params
     let article
     try {
       try {
-        article = await $content('blog', category, slug).fetch()
+        article = await $content('blog', slug).fetch()
       } catch (e) {
         throw new Error('Page not found.')
       }
@@ -46,9 +46,12 @@ export default {
         article.category = await $content(
           'blog',
           'categories',
-          category
+          article.category
         ).fetch()
-        article.category = article.category.name
+        article.category = {
+          name: article.category.name,
+          slug: article.category.slug,
+        }
       } catch (e) {
         throw new Error('Category settings is incorrect.')
       }
@@ -149,8 +152,8 @@ export default {
         },
         {
           disabled: false,
-          to: this._article.dir,
-          text: this._article.category,
+          to: '/blog/category/' + this._article.category.slug,
+          text: this._article.category.name,
         },
         {
           disabled: true,
@@ -187,7 +190,7 @@ export default {
       if (article.category) {
         meta.push({
           icon: 'tag',
-          text: article.category,
+          text: article.category.name,
         })
       }
       return meta
