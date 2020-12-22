@@ -4,7 +4,11 @@
     "slug": "news"
   },
   {
-    "name": "未分類",
-    "slug": "other"
+    "name": "お役立ち情報",
+    "slug": "tips"
+  },
+  {
+    "name": "Mod・プラグイン",
+    "slug": "modification"
   }
 ]
