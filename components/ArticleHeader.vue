@@ -8,6 +8,8 @@
           :icon="item.icon"
           :image="item.image"
           :text="item.text"
+          :to="item.to"
+          :href="item.href"
         />
       </template>
     </div>
@@ -44,7 +46,7 @@ export default {
   computed: {
     _meta() {
       return this.meta.map((item, index) => {
-        item.index = index + 1
+        item.id = index + 1
         return item
       })
     },

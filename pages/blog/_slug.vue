@@ -191,6 +191,7 @@ export default {
         meta.push({
           icon: 'tag',
           text: article.category.name,
+          to: '/blog/category/' + article.category.slug,
         })
       }
       return meta
