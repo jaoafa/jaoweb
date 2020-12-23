@@ -37,7 +37,7 @@ export default {
       }
       try {
         article.author = article.author
-          ? await $content('authors', article.author).fetch()
+          ? await $content('blog', 'authors', article.author).fetch()
           : {}
       } catch (e) {
         throw new Error('Author settings is incorrect.')
