@@ -3,23 +3,13 @@
     <div class="article-footer__author">
       <img class="article-footer__author-image" :src="_author.icon" />
       <div class="article-footer__author-name">
-        <app-icon
-          icon="shield-check"
-          class="article-footer__author-name-icon"
-        />
         {{ _author.name }}
       </div>
       <div class="article-footer__author-bio">{{ _author.bio }}</div>
     </div>
     <div class="article-footer__meta">
-      <div class="article-footer__meta-item">
-        <app-icon icon="calendar" class="article-footer__meta-icon" />
-        公開日：{{ createdAt }}
-      </div>
-      <div class="article-footer__meta-item">
-        <app-icon icon="update" class="article-footer__meta-icon" />
-        更新日：{{ updatedAt }}
-      </div>
+      <article-meta-item icon="calendar" :text="'公開日：' + createdAt" />
+      <article-meta-item icon="update" :text="'更新日：' + updatedAt" />
     </div>
   </footer>
 </template>
@@ -73,7 +63,7 @@ export default {
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: ($size-base * 8) 1fr;
-  gap: 0 ($size-base * 3);
+  gap: ($size-base * 1) ($size-base * 3);
   max-width: ($size-base * 67);
 
   @include bp(md) {
@@ -92,36 +82,24 @@ export default {
 .article-footer__author-name {
   font-size: $font-size-l1;
   font-weight: $font-weight-bold;
-}
-
-.article-footer__author-name-icon {
-  margin-right: ($size-base * 1);
-  font-size: $font-size-l2;
-  color: $color-primary;
+  line-height: 1.25;
 }
 
 .article-footer__author-bio {
   font-size: $font-size-s1;
-  line-height: 1.5;
   white-space: pre-wrap;
 }
 
 .article-footer__meta {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-auto-rows: auto;
+  gap: ($size-base * 1);
   margin-top: ($size-base * 4);
   font-size: $font-size-s1;
 
   @include bp(md) {
     margin-top: 0;
   }
-}
-
-.article-footer__meta-item {
-  display: flex;
-  align-items: center;
-}
-
-.article-footer__meta-icon {
-  margin-right: ($size-base * 1);
-  font-size: $font-size-l1;
 }
 </style>
