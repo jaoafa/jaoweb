@@ -190,7 +190,7 @@ $header-border-width-desktop: 6px;
   &::before {
     position: absolute;
     top: $header-main-height-desktop;
-    right: calc(100% - #{$header-logo-width-desktop});
+    right: calc(100% - #{$header-logo-width-desktop} + 4px);
     display: none;
     width: ($size-base * 32);
     height: $header-border-width-mobile;
@@ -216,7 +216,7 @@ $header-border-width-desktop: 6px;
 
     @include bp(md) {
       top: $header-main-height-desktop;
-      width: calc(100% - #{$header-logo-width-desktop});
+      width: calc(100% - #{$header-logo-width-desktop} + 4px);
       height: $header-border-width-desktop;
     }
   }
