@@ -326,7 +326,7 @@ Hiratake has poor vocabulary.
 
 ### author
 
-投稿者情報です。 `/content/authors.json` の `slug` を設定することで、名前やアイコン画像などの情報を表示できます。
+投稿者情報です。 `/content/blog/authors.json` の `slug` を設定することで、名前やアイコン画像などの情報を表示できます。
 
 ### createdAt
 
