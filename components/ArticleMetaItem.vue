@@ -2,16 +2,12 @@
   <div class="article-meta-item">
     <component
       :is="iconTag"
-      :icon="icon"
-      :src="image"
-      alt="icon"
+      v-bind="iconAttributes"
       class="article-meta-item__icon"
-      loading="lazy"
     />
     <component
       :is="textTag"
-      :href="href"
-      :to="to"
+      v-bind="textAttributes"
       class="article-meta-item__text"
     >
       {{ text }}
@@ -27,8 +23,9 @@ export default {
     AppIcon,
   },
   props: {
-    href: {
+    text: {
       default: '',
+      required: true,
       type: String,
     },
     icon: {
@@ -39,9 +36,8 @@ export default {
       default: '',
       type: String,
     },
-    text: {
+    href: {
       default: '',
-      required: true,
       type: String,
     },
     to: {
@@ -54,9 +50,35 @@ export default {
       const tag = this.icon ? 'app-icon' : 'img'
       return tag
     },
+    iconAttributes() {
+      const attributes = {}
+      const icon = this.icon
+      const image = this.image
+      if (icon) {
+        attributes.icon = icon
+      }
+      if (image) {
+        attributes.src = image
+        attributes.alt = 'icon'
+        attributes.loading = 'lazy'
+      }
+      return attributes
+    },
     textTag() {
       const tag = this.href ? 'a' : this.to ? 'nuxt-link' : 'span'
       return tag
+    },
+    textAttributes() {
+      const attributes = {}
+      const href = this.href
+      const to = this.to
+      if (href) {
+        attributes.href = href
+      }
+      if (to) {
+        attributes.to = to
+      }
+      return attributes
     },
   },
 }
