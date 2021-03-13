@@ -3,7 +3,7 @@
     class="the-header-expanded"
     :class="{ show: mobileState, selected: current }"
   >
-    <the-header-expanded-mobile :items="items" />
+    <the-header-expanded-mobile :items="items" @close="closeNavigation" />
     <the-header-expanded-desktop :current="current" :items="items" />
   </div>
 </template>
@@ -22,6 +22,11 @@ export default {
     mobileState: {
       default: false,
       type: Boolean,
+    },
+  },
+  methods: {
+    closeNavigation() {
+      this.$emit('close')
     },
   },
 }

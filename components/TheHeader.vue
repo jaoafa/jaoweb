@@ -38,6 +38,7 @@
       :current="navigationCurrent"
       :items="navigationItems"
       :mobile-state="navigationMobileState"
+      @close="navigationMobileState = false"
     />
   </header>
 </template>

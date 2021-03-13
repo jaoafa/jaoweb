@@ -56,6 +56,7 @@
                 v-if="item.to"
                 :to="item.to"
                 class="the-header-expanded-mobile__link"
+                @click.native="closeNavigation"
               >
                 <span class="the-header-expanded-mobile__label">
                   {{ item.text }}
@@ -83,6 +84,7 @@
                     v-if="page.to"
                     :to="page.to"
                     class="the-header-expanded-mobile__link"
+                    @click.native="closeNavigation"
                   >
                     <span class="the-header-expanded-mobile__label">
                       {{ page.text }}
@@ -144,6 +146,11 @@ export default {
   methods: {
     updateCurrent(value) {
       this.current = value
+    },
+    closeNavigation() {
+      // eslint-disable-next-line no-console
+      console.log('closeNav')
+      this.$emit('close')
     },
   },
 }
