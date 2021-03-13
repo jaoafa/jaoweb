@@ -148,8 +148,6 @@ export default {
       this.current = value
     },
     closeNavigation() {
-      // eslint-disable-next-line no-console
-      console.log('closeNav')
       this.$emit('close')
     },
   },
