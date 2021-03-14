@@ -11,6 +11,8 @@ const baseDescription =
   'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。'
 
 export default {
+  ssr: true,
+  target: 'static',
   publicRuntimeConfig: {
     baseName,
     baseDescription,
