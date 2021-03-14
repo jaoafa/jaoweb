@@ -119,18 +119,18 @@ export default {
         article.createdAt =
           createdAt.getFullYear() +
           '-' +
-          (createdAt.getMonth() + 1) +
+          ('0' + (createdAt.getMonth() + 1)).slice(-2) +
           '-' +
-          createdAt.getDate()
+          ('0' + createdAt.getDate()).slice(-2)
       }
       if (article.updatedAt) {
         const updatedAt = new Date(article.updatedAt)
         article.updatedAt =
           updatedAt.getFullYear() +
           '-' +
-          (updatedAt.getMonth() + 1) +
+          ('0' + (updatedAt.getMonth() + 1)).slice(-2) +
           '-' +
-          updatedAt.getDate()
+          ('0' + updatedAt.getDate()).slice(-2)
       }
       if (!article.image) {
         article.image = ''
