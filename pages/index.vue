@@ -34,9 +34,9 @@
         <div class="intro-section__balloon">jao<br />afa</div>
         <div class="intro-section__members intro-section__members--admin">
           <template v-for="item in members.admin">
-            <nuxt-link
+            <a
               :key="item.id"
-              :to="'/community/users/' + item.uuid"
+              :href="'https://users.jaoafa.com/' + item.uuid"
               :title="item.name"
               class="intro-section__user"
             >
@@ -46,14 +46,14 @@
                 "
                 loading="lazy"
               />
-            </nuxt-link>
+            </a>
           </template>
         </div>
         <div class="intro-section__members intro-section__members--moderator">
           <template v-for="item in members.moderator">
-            <nuxt-link
+            <a
               :key="item.id"
-              :to="'/community/users/' + item.uuid"
+              :href="'https://users.jaoafa.com/' + item.uuid"
               :title="item.name"
               class="intro-section__user"
             >
@@ -63,7 +63,7 @@
                 "
                 loading="lazy"
               />
-            </nuxt-link>
+            </a>
           </template>
         </div>
         <p>（jao鯖のゆかいな運営メンバーたち）</p>
