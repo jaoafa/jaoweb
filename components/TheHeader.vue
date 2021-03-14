@@ -120,13 +120,8 @@ export default {
           children: [
             {
               text: 'ユーザ一覧',
-              to: '/community/users',
+              href: 'https://users.jaoafa.com',
               value: 'community-users',
-            },
-            {
-              text: 'ギャラリー',
-              to: '/community/gallery',
-              value: 'community-gallery',
             },
             {
               text: 'Wiki',
