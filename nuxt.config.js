@@ -13,6 +13,9 @@ const baseDescription =
 export default {
   ssr: true,
   target: 'static',
+  generate: {
+    fallback: true,
+  },
   publicRuntimeConfig: {
     baseName,
     baseDescription,
