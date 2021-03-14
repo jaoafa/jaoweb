@@ -82,7 +82,8 @@ export default {
     }
   }
 
-  p a {
+  p a,
+  li a {
     color: $color-link;
 
     &:hover {
