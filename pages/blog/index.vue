@@ -9,12 +9,68 @@
         title="ブログ"
         description="jaoの世界から、最新情報から旬なネタ、お役立ち情報まで幅広くお届けします。"
       />
+      <div class="page__body"></div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  async asyncData({ $content, $config, error }) {
+    let collection
+    let authors
+    let categories
+    try {
+      try {
+        collection = await $content('blog')
+          .only(['title', 'author', 'image', 'category', 'createdAt', 'path'])
+          .sortBy('createdAt', 'desc')
+          .fetch()
+      } catch (e) {
+        throw new Error('Page not found.')
+      }
+      try {
+        authors = await $content('blog', 'authors').fetch()
+      } catch (e) {
+        throw new Error('Author settings is incorrect.')
+      }
+      try {
+        categories = await $content('blog', 'categories').fetch()
+      } catch (e) {
+        throw new Error('Category settings is incorrect.')
+      }
+    } catch (e) {
+      if (e.message === 'Page not found.') {
+        error({ statusCode: 404, message: e.message })
+      } else {
+        error({ statusCode: 500, message: e.message })
+      }
+    }
+    return {
+      collection: collection.map((article) => {
+        const createdAt = new Date(article.createdAt)
+        return {
+          title: article.title,
+          path: article.path,
+          image: article.image || $config.baseUrl + $config.baseImage,
+          author: [...authors]
+            .filter((item) => item.slug === article.author)
+            .shift().name,
+          category: [...categories]
+            .filter((item) => item.slug === article.category)
+            .shift().name,
+          createdAt:
+            createdAt.getFullYear() +
+            '-' +
+            ('0' + (createdAt.getMonth() + 1)).slice(-2) +
+            '-' +
+            ('0' + createdAt.getDate()).slice(-2),
+        }
+      }),
+      authors,
+      categories,
+    }
+  },
   head() {
     return {
       title: 'ブログ',
@@ -66,6 +122,14 @@ export default {
   }
   @include bp(xl) {
     margin-left: auto;
+  }
+}
+
+.page__body {
+  margin-top: ($size-base * 5);
+
+  @include bp(md) {
+    margin-top: ($size-base * 7);
   }
 }
 </style>
