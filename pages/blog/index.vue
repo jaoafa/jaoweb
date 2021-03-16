@@ -9,7 +9,9 @@
         title="ブログ"
         description="jaoの世界から、最新情報から旬なネタ、お役立ち情報まで幅広くお届けします。"
       />
-      <div class="page__body"></div>
+      <div class="page__body">
+        <article-collection :collection="collection" />
+      </div>
     </div>
   </div>
 </template>
@@ -23,7 +25,15 @@ export default {
     try {
       try {
         collection = await $content('blog')
-          .only(['title', 'author', 'image', 'category', 'createdAt', 'path'])
+          .only([
+            'title',
+            'slug',
+            'author',
+            'image',
+            'category',
+            'createdAt',
+            'path',
+          ])
           .sortBy('createdAt', 'desc')
           .fetch()
       } catch (e) {
@@ -51,11 +61,12 @@ export default {
         const createdAt = new Date(article.createdAt)
         return {
           title: article.title,
+          slug: article.slug,
           path: article.path,
           image: article.image || $config.baseUrl + $config.baseImage,
           author: [...authors]
             .filter((item) => item.slug === article.author)
-            .shift().name,
+            .shift(),
           category: [...categories]
             .filter((item) => item.slug === article.category)
             .shift().name,
