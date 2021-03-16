@@ -7,7 +7,7 @@
         class="article-collection__card"
       >
         <div class="article-collection__header">
-          <img :src="item.image" :alt="item.title" />
+          <img :src="item.image" :alt="item.title" loading="lazy" />
         </div>
         <div class="article-collection__body">
           <span class="article-collection__category">{{ item.category }}</span>
