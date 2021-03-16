@@ -38,13 +38,26 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   gap: ($size-base * 3) ($size-base * 2);
+  align-items: flex-start;
 }
 
 .article-collection__card {
   overflow: hidden;
+  color: inherit;
+  text-decoration: none;
   background-color: $color-white;
   border: solid 1px $color-gray-5;
   border-radius: ($size-base * 0.5);
+  transition-duration: $transition-duration-base;
+  transition-property: opacity;
+
+  &:first-child {
+    grid-column: span 2;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
 }
 
 .article-collection__header {
@@ -64,5 +77,34 @@ export default {
     margin: auto;
     object-fit: cover;
   }
+}
+
+.article-collection__body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: ($size-base * 2) ($size-base * 2);
+}
+
+.article-collection__category {
+  width: 100%;
+  font-size: $font-size-s2;
+  color: $color-gray-3;
+}
+
+.article-collection__title {
+  width: 100%;
+  margin-bottom: ($size-base * 1);
+  font-size: $font-size-l1;
+}
+
+.article-collection__author {
+  margin-right: ($size-base * 1);
+  font-size: $font-size-s2;
+  color: $color-gray-3;
+}
+
+.article-collection__date {
+  font-size: $font-size-s2;
+  color: $color-gray-3;
 }
 </style>
