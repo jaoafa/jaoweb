@@ -66,6 +66,13 @@ export default {
           image: article.image || $config.baseUrl + $config.baseImage,
           author: [...authors]
             .filter((item) => item.slug === article.author)
+            .map((item) => {
+              return {
+                name: item.name,
+                icon:
+                  'https://crafatar.com/avatars/' + item.uuid + '?overlay=true',
+              }
+            })
             .shift(),
           category: [...categories]
             .filter((item) => item.slug === article.category)

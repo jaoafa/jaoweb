@@ -12,8 +12,14 @@
         <div class="article-collection__body">
           <span class="article-collection__category">{{ item.category }}</span>
           <h2 class="article-collection__title">{{ item.title }}</h2>
-          <span class="article-collection__author">{{ item.author.name }}</span>
-          <span class="article-collection__date">{{ item.createdAt }}</span>
+          <span class="article-collection__author">
+            <img :src="item.author.icon" />
+            {{ item.author.name }}
+          </span>
+          <span class="article-collection__date">
+            <app-icon icon="calendar" left />
+            {{ item.createdAt }}
+          </span>
         </div>
       </nuxt-link>
     </template>
@@ -107,13 +113,25 @@ export default {
 .article-collection__author {
   display: inline-flex;
   align-items: center;
-  margin-right: ($size-base * 1);
+  margin-right: ($size-base * 2);
   font-size: $font-size-s2;
   color: $color-gray-3;
+
+  & > img {
+    width: ($size-base * 2);
+    margin-right: ($size-base * 0.5);
+  }
 }
 
 .article-collection__date {
+  display: inline-flex;
+  align-items: center;
   font-size: $font-size-s2;
   color: $color-gray-3;
+
+  & > span {
+    margin-right: ($size-base * 0.5);
+    font-size: $font-size-base;
+  }
 }
 </style>
