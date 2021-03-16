@@ -47,15 +47,16 @@ export default {
   text-decoration: none;
   background-color: $color-white;
   border: solid 1px $color-gray-5;
-  border-radius: ($size-base * 0.5);
+  border-radius: 3px;
   transition-duration: $transition-duration-base;
-  transition-property: opacity;
+  transition-property: border-color opacity;
 
   &:first-child {
     grid-column: span 2;
   }
 
   &:hover {
+    border-color: $color-gray-4;
     opacity: 0.85;
   }
 }
@@ -92,12 +93,20 @@ export default {
 }
 
 .article-collection__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   width: 100%;
   margin-bottom: ($size-base * 1);
+  overflow: hidden;
   font-size: $font-size-l1;
+  line-height: 1.5;
+  text-overflow: ellipsis;
 }
 
 .article-collection__author {
+  display: inline-flex;
+  align-items: center;
   margin-right: ($size-base * 1);
   font-size: $font-size-s2;
   color: $color-gray-3;
