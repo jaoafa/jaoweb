@@ -41,10 +41,17 @@ export default {
 <style lang="scss" scoped>
 .article-collection {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto;
   grid-auto-rows: auto;
   gap: ($size-base * 3) ($size-base * 2);
   align-items: flex-start;
+
+  @include bp(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include bp(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .article-collection__card {
@@ -58,7 +65,9 @@ export default {
   transition-property: border-color opacity;
 
   &:first-child {
-    grid-column: span 2;
+    @include bp(md) {
+      grid-column: span 2;
+    }
   }
 
   &:hover {
