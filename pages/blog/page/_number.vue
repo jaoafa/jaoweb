@@ -18,7 +18,8 @@
 
 <script>
 export default {
-  async asyncData({ $content, $config, error }) {
+  async asyncData({ $content, $config, params, error }) {
+    const pageNumber = parseInt(params.number) || 1
     const limit = 8
     let collection
     let authors
@@ -36,8 +37,12 @@ export default {
             'path',
           ])
           .sortBy('createdAt', 'desc')
+          .skip(limit * (pageNumber - 1))
           .limit(limit)
           .fetch()
+        if (!collection.length) {
+          throw new Error('Page not found.')
+        }
       } catch (e) {
         throw new Error('Page not found.')
       }
@@ -89,6 +94,7 @@ export default {
       }),
       authors,
       categories,
+      pageNumber,
     }
   },
   head() {
