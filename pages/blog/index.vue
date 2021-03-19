@@ -16,7 +16,7 @@
     <div class="page__footer">
       <app-pagination
         :value="1"
-        :length-visible="8"
+        :total-visible="8"
         :length="totalPages"
         @input="selectPage"
       />

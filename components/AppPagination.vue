@@ -57,7 +57,7 @@ export default {
         return val % 1 === 0
       },
     },
-    lengthVisible: {
+    totalVisible: {
       default: 0,
       type: Number,
       validator(val) {
