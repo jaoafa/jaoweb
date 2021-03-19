@@ -44,7 +44,6 @@ export default {
   grid-template-columns: auto;
   grid-auto-rows: auto;
   gap: ($size-base * 3) ($size-base * 2);
-  align-items: flex-start;
 
   @include bp(sm) {
     grid-template-columns: repeat(2, 1fr);
@@ -59,19 +58,14 @@ export default {
   color: inherit;
   text-decoration: none;
   background-color: $color-white;
-  border: solid 1px $color-gray-5;
   border-radius: 3px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.12);
   transition-duration: $transition-duration-base;
-  transition-property: border-color opacity;
-
-  &:first-child {
-    @include bp(md) {
-      grid-column: span 2;
-    }
-  }
+  transition-property: border-color box-shadow opacity;
 
   &:hover {
     border-color: $color-gray-4;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
     opacity: 0.85;
   }
 }

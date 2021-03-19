@@ -28,7 +28,7 @@
 export default {
   async asyncData({ $content, $config, params, error }) {
     const pageNumber = parseInt(params.number) || 1
-    const limit = 8
+    const limit = 9
     let collection
     let authors
     let categories

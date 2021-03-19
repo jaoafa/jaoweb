@@ -27,7 +27,7 @@
 <script>
 export default {
   async asyncData({ $content, $config, error }) {
-    const limit = 8
+    const limit = 9
     let collection
     let authors
     let categories
