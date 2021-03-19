@@ -14,7 +14,12 @@
       </div>
     </div>
     <div class="page__footer">
-      <app-pagination :value="1" :length-visible="8" :length="totalPages" />
+      <app-pagination
+        :value="1"
+        :length-visible="8"
+        :length="totalPages"
+        @input="selectPage"
+      />
     </div>
   </div>
 </template>
@@ -26,9 +31,11 @@ export default {
     let collection
     let authors
     let categories
-    const totalPages = 15
+    let totalPages
     try {
       try {
+        const all = await $content('blog').fetch()
+        totalPages = Math.ceil(all.length / limit)
         collection = await $content('blog')
           .only([
             'title',
@@ -122,6 +129,11 @@ export default {
           text: 'ブログ',
         },
       ]
+    },
+  },
+  methods: {
+    selectPage(page) {
+      this.$router.push('/blog/page/' + page)
     },
   },
 }

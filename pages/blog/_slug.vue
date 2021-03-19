@@ -151,7 +151,7 @@ export default {
           text: 'ブログ',
         },
         {
-          disabled: false,
+          disabled: true,
           to: '/blog/category/' + this._article.category.slug,
           text: this._article.category.name,
         },
@@ -191,7 +191,6 @@ export default {
         meta.push({
           icon: 'tag',
           text: article.category.name,
-          to: '/blog/category/' + article.category.slug,
         })
       }
       return meta

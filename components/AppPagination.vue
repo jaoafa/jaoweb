@@ -3,7 +3,7 @@
     <ul class="app-pagination__container">
       <template v-if="value !== 1">
         <li class="app-pagination__item">
-          <button class="app-pagination__button">
+          <button class="app-pagination__button" @click="prev">
             <app-icon icon="chevron-left" />
           </button>
         </li>
@@ -16,14 +16,18 @@
             'app-pagination__item--current': item.label === value,
           }"
         >
-          <component :is="item.tag" :class="item.class">
+          <component
+            :is="item.tag"
+            :class="item.class"
+            @click="item.tag === 'button' ? input(item.label) : null"
+          >
             {{ item.label }}
           </component>
         </li>
       </template>
       <template v-if="value !== length">
         <li class="app-pagination__item">
-          <button class="app-pagination__button">
+          <button class="app-pagination__button" @click="next">
             <app-icon icon="chevron-right" />
           </button>
         </li>

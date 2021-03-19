@@ -18,6 +18,7 @@
         :value="pageNumber"
         :length-visible="8"
         :length="totalPages"
+        @input="selectPage"
       />
     </div>
   </div>
@@ -34,6 +35,8 @@ export default {
     let totalPages
     try {
       try {
+        const all = await $content('blog').fetch()
+        totalPages = Math.ceil(all.length / limit)
         collection = await $content('blog')
           .only([
             'title',
@@ -132,6 +135,11 @@ export default {
           text: 'ブログ',
         },
       ]
+    },
+  },
+  methods: {
+    selectPage(page) {
+      this.$router.push('/blog/page/' + page)
     },
   },
 }
