@@ -13,6 +13,13 @@
         <article-collection :collection="collection" />
       </div>
     </div>
+    <div class="page__footer">
+      <app-pagination
+        :value="pageNumber"
+        :length-visible="8"
+        :length="totalPages"
+      />
+    </div>
   </div>
 </template>
 
@@ -24,6 +31,7 @@ export default {
     let collection
     let authors
     let categories
+    let totalPages
     try {
       try {
         collection = await $content('blog')
@@ -94,6 +102,7 @@ export default {
       }),
       authors,
       categories,
+      totalPages,
       pageNumber,
     }
   },
@@ -157,5 +166,10 @@ export default {
   @include bp(md) {
     margin-top: ($size-base * 7);
   }
+}
+
+.page__footer {
+  margin-top: ($size-base * 7);
+  overflow: hidden;
 }
 </style>

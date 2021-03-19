@@ -13,6 +13,9 @@
         <article-collection :collection="collection" />
       </div>
     </div>
+    <div class="page__footer">
+      <app-pagination :value="1" :length-visible="8" :length="totalPages" />
+    </div>
   </div>
 </template>
 
@@ -23,6 +26,7 @@ export default {
     let collection
     let authors
     let categories
+    const totalPages = 15
     try {
       try {
         collection = await $content('blog')
@@ -89,6 +93,7 @@ export default {
       }),
       authors,
       categories,
+      totalPages,
     }
   },
   head() {
@@ -151,5 +156,10 @@ export default {
   @include bp(md) {
     margin-top: ($size-base * 7);
   }
+}
+
+.page__footer {
+  margin-top: ($size-base * 7);
+  overflow: hidden;
 }
 </style>
