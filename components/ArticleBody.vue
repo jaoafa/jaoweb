@@ -83,7 +83,9 @@ export default {
   }
 
   p a,
-  li a {
+  li a,
+  th a,
+  td a {
     color: $color-link;
 
     &:hover {
@@ -196,6 +198,10 @@ export default {
       @include bp(md) {
         padding: ($size-base * 2);
         word-wrap: break-word;
+      }
+
+      img {
+        width: auto;
       }
     }
 
