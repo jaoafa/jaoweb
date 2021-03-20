@@ -28,7 +28,15 @@ export default {
   },
   plugins: [],
   components: true,
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/google-analytics',
+  ],
+  googleAnalytics: {
+    id: 'UA-93539040-2',
+    dev: process.env.NODE_ENV === 'development',
+  },
   modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/style-resources'],
   content: {
     markdown: {
