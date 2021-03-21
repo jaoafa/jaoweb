@@ -70,10 +70,15 @@ export default {
               to: '/server/specifications',
               value: 'server-specifications',
             },
-            {
+            /* {
               text: '利用規約',
               to: '/server/terms',
               value: 'server-terms',
+            }, */
+            {
+              text: 'サーバルール',
+              to: '/server/rules',
+              value: 'server-rules',
             },
             {
               text: 'ガイドライン',
