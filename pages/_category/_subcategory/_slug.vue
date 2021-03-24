@@ -55,7 +55,9 @@ export default {
     const meta = []
     if (article.description) {
       if (article.description.length > 80) {
-        article.description = article.description.substr(0, 80) + '...'
+        article.description = (
+          article.description.substr(0, 80) + '...'
+        ).replace(/\r?\n/g, '')
       }
       meta.push({
         hid: 'description',
