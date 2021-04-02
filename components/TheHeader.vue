@@ -70,6 +70,11 @@ export default {
               to: '/server/profiles',
               value: 'server-profiles',
             },
+            /* {
+              text: '利用規約',
+              to: '/server/terms',
+              value: 'server-terms',
+            }, */
             {
               text: 'サーバルール',
               to: '/server/rules',
@@ -98,7 +103,7 @@ export default {
                   value: 'server-guidelines-cities',
                 },
                 {
-                  text: '撮影に関するガイドライン',
+                  text: '撮影・動画配信に関するガイドライン',
                   to: '/server/guidelines/broadcasts',
                   value: 'server-guidelines-broadcasts',
                 },
