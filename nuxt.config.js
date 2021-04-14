@@ -14,6 +14,13 @@ export default {
   ssr: true,
   target: 'static',
   generate: {
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const limit = 9
+      const pages = await $content('/blog').fetch()
+      const total = Math.ceil(pages.length / limit)
+      return [...Array(total)].map((_, i) => `/blog/page/${i + 1}`)
+    },
     fallback: true,
   },
   publicRuntimeConfig: {

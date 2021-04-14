@@ -49,15 +49,20 @@ export default {
     return {
       // Navigation items
       navigationItems: [
+        // {
+        //   text: '利用規約',
+        //   to: '/server/terms',
+        //   value: 'server-terms',
+        // },
         {
-          text: '利用規約',
-          to: '/server/terms',
-          value: 'server-terms',
+          text: 'サーバルール',
+          to: '/server/rules',
+          value: 'server-rules',
         },
         {
           text: 'プライバシーポリシー',
-          to: '/server/privacy',
-          value: 'server-privacy',
+          to: '/server/policies/privacy',
+          value: 'server-policies-privacy',
         },
         {
           text: 'よくあるご質問',
