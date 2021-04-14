@@ -30,7 +30,7 @@
         <div class="invite-section__text">
           <p>
             サーバに参加する前に、
-            <nuxt-link to="/server/terms">利用規約</nuxt-link>
+            <nuxt-link to="/server/rules">サーバルール</nuxt-link>
             をお読みください。
           </p>
         </div>
