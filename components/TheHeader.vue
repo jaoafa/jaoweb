@@ -136,6 +136,11 @@ export default {
                 },
               ],
             },
+            {
+              text: 'Dynmap',
+              href: 'https://map.jaoafa.com/',
+              value: 'server-dynmap',
+            },
           ],
         },
         {
