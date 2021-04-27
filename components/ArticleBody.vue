@@ -218,7 +218,8 @@ export default {
   }
   p > code,
   th > code,
-  td > code {
+  td > code,
+  li > code {
     padding: 0 ($size-base * 0.5);
     background-color: $color-gray-7;
     border: solid 1px $color-gray-5;

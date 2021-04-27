@@ -30,7 +30,7 @@
         <div class="invite-section__text">
           <p>
             サーバに参加する前に、
-            <nuxt-link to="/server/terms">利用規約</nuxt-link>
+            <nuxt-link to="/server/rules">サーバルール</nuxt-link>
             をお読みください。
           </p>
         </div>
@@ -46,7 +46,7 @@ export default {
       // Server Address
       serverAddress: 'play.jaoafa.com',
       // Server Version
-      serverVersion: '1.12.2',
+      serverVersion: '1.16.5',
     }
   },
   methods: {

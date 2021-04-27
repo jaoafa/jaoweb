@@ -14,6 +14,13 @@ export default {
   ssr: true,
   target: 'static',
   generate: {
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const limit = 9
+      const pages = await $content('/blog').fetch()
+      const total = Math.ceil(pages.length / limit)
+      return [...Array(total)].map((_, i) => `/blog/page/${i + 1}`)
+    },
     fallback: true,
   },
   publicRuntimeConfig: {
@@ -37,7 +44,12 @@ export default {
     id: 'UA-93539040-2',
     dev: process.env.NODE_ENV === 'development',
   },
-  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/style-resources'],
+  modules: [
+    '@nuxt/content',
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/sitemap',
+  ],
   content: {
     markdown: {
       prism: {
@@ -50,6 +62,29 @@ export default {
     scss: ['@/assets/sass/_variables.scss', '@/assets/sass/_mixins.scss'],
   },
   css: ['@/assets/sass/_reset.scss'],
+  sitemap: {
+    hostname: baseUrl,
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const pages = await $content('/', { deep: true })
+        .only(['path', 'extension', 'updatedAt'])
+        .fetch()
+      return pages
+        .filter((item) => item.extension === '.md')
+        .map((item) => {
+          return {
+            url: item.path,
+            lastmod: item.updatedAt,
+          }
+        })
+        .map((item) => {
+          if (item.url.endsWith('/index')) {
+            item.url = item.url.replace(/\/index$/, '')
+          }
+          return item
+        })
+    },
+  },
   build: {
     loaders: {
       scss: {

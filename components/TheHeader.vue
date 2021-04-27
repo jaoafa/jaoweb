@@ -61,19 +61,31 @@ export default {
               value: 'server-biginners',
             },
             {
-              text: '運営者情報',
-              to: '/server/profiles',
-              value: 'server-profiles',
-            },
-            {
               text: 'サービス仕様',
               to: '/server/specifications',
               value: 'server-specifications',
             },
             {
+              text: '運営者情報',
+              to: '/server/profiles',
+              value: 'server-profiles',
+            },
+            /* {
               text: '利用規約',
               to: '/server/terms',
               value: 'server-terms',
+            }, */
+            {
+              text: 'サーバルール',
+              to: '/server/rules',
+              value: 'server-rules',
+              children: [
+                {
+                  text: 'Discordサーバ利用ルール',
+                  to: '/server/rules/discord',
+                  value: 'server-rules-discord',
+                },
+              ],
             },
             {
               text: 'ガイドライン',
@@ -81,7 +93,7 @@ export default {
               value: 'server-guidelines',
               children: [
                 {
-                  text: '鉄道敷設に関するガイドライン',
+                  text: '鉄道・道路敷設に関するガイドライン',
                   to: '/server/guidelines/railways',
                   value: 'server-guidelines-railways',
                 },
@@ -96,16 +108,38 @@ export default {
                   value: 'server-guidelines-broadcasts',
                 },
                 {
-                  text: '発言に関するガイドライン',
+                  text: 'チャットに関するガイドライン',
                   to: '/server/guidelines/communications',
                   value: 'server-guidelines-communications',
                 },
               ],
             },
             {
-              text: 'プライバシーポリシー',
-              to: '/server/privacy',
-              value: 'server-privacy',
+              text: '方針',
+              to: '/server/policies',
+              value: 'server-policies',
+              children: [
+                {
+                  text: 'プライバシーポリシー',
+                  to: '/server/policies/privacy',
+                  value: 'server-policies-privacy',
+                },
+                {
+                  text: '権限付与方針',
+                  to: '/server/policies/permissions',
+                  value: 'server-policies-permissions',
+                },
+                {
+                  text: '処罰方針',
+                  to: '/server/policies/bans',
+                  value: 'server-policies-bans',
+                },
+              ],
+            },
+            {
+              text: 'Dynmap',
+              href: 'https://map.jaoafa.com/',
+              value: 'server-dynmap',
             },
           ],
         },
