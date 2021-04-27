@@ -1,5 +1,5 @@
 ---
-title: 'サーバ情報'
+title: "サーバ情報"
 createdAt: 2021-03-14
 updatedAt: 2021-03-14
 ---
