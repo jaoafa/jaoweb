@@ -1,6 +1,5 @@
 import Sass from 'sass'
 import Fiber from 'fibers'
-import Webpack from 'webpack'
 
 const baseName = process.env.BASE_NAME || 'jao Minecraft Server'
 const baseUrl = process.env.BASE_URL || 'https://jaoafa.com'
@@ -94,11 +93,6 @@ export default {
         },
       },
     },
-    plugins: [
-      new Webpack.ProvidePlugin({
-        _: 'lodash',
-      }),
-    ],
   },
   head: {
     htmlAttrs: {
