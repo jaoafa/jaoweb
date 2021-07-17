@@ -49,6 +49,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .page {
   padding: ($size-base * 8) ($size-base * 2) ($size-base * 14);
 

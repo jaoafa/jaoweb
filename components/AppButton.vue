@@ -96,6 +96,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 $app-button-sizes: (
   large: (
     'height': $size-base * 6,

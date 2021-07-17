@@ -164,6 +164,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .app-pagination {
   display: flex;
   justify-content: center;

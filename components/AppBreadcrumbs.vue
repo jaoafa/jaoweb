@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .app-breadcrumbs {
   width: 100%;
 }

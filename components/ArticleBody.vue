@@ -17,6 +17,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use 'assets/sass' as *;
+
 .article-body__content {
   display: grid;
   grid-template-columns: 100%;

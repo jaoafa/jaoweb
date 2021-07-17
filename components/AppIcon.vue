@@ -34,6 +34,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .app-icon {
   display: inline-flex;
   line-height: 1;

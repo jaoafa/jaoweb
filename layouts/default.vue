@@ -14,6 +14,8 @@ export default {}
 </script>
 
 <style lang="scss">
+@use 'assets/sass' as *;
+
 * {
   box-sizing: border-box;
 }

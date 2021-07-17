@@ -170,6 +170,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .page {
   max-width: $size-width-min;
   padding: ($size-base * 3) ($size-base * 2) ($size-base * 16);

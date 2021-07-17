@@ -1,7 +1,3 @@
-import Sass from 'sass'
-import Fiber from 'fibers'
-import Webpack from 'webpack'
-
 const baseName = process.env.BASE_NAME || 'jao Minecraft Server'
 const baseUrl = process.env.BASE_URL || 'https://jaoafa.com'
 const baseDir = process.env.BASE_DIR || '/'
@@ -11,95 +7,8 @@ const baseDescription =
   'ここで爆発します、あなたの可能性が。jao Minecraft Serverの公式Webサイトです。'
 
 export default {
-  ssr: true,
   target: 'static',
-  generate: {
-    routes: async () => {
-      const { $content } = require('@nuxt/content')
-      const limit = 9
-      const pages = await $content('/blog').fetch()
-      const total = Math.ceil(pages.length / limit)
-      return [...Array(total)].map((_, i) => `/blog/page/${i + 1}`)
-    },
-    fallback: true,
-  },
-  publicRuntimeConfig: {
-    baseName,
-    baseDescription,
-    baseUrl,
-    baseImage,
-  },
-  privateRuntimeConfig: {},
-  router: {
-    base: baseDir,
-  },
-  plugins: [],
-  components: true,
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/stylelint-module',
-    '@nuxtjs/google-analytics',
-  ],
-  googleAnalytics: {
-    id: 'UA-93539040-2',
-    dev: process.env.NODE_ENV === 'development',
-  },
-  modules: [
-    '@nuxt/content',
-    '@nuxtjs/axios',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/sitemap',
-  ],
-  content: {
-    markdown: {
-      prism: {
-        theme: 'prism-themes/themes/prism-atom-dark.css',
-      },
-    },
-  },
-  axios: {},
-  styleResources: {
-    scss: ['@/assets/sass/_variables.scss', '@/assets/sass/_mixins.scss'],
-  },
-  css: ['@/assets/sass/_reset.scss'],
-  sitemap: {
-    hostname: baseUrl,
-    routes: async () => {
-      const { $content } = require('@nuxt/content')
-      const pages = await $content('/', { deep: true })
-        .only(['path', 'extension', 'updatedAt'])
-        .fetch()
-      return pages
-        .filter((item) => item.extension === '.md')
-        .map((item) => {
-          return {
-            url: item.path,
-            lastmod: item.updatedAt,
-          }
-        })
-        .map((item) => {
-          if (item.url.endsWith('/index')) {
-            item.url = item.url.replace(/\/index$/, '')
-          }
-          return item
-        })
-    },
-  },
-  build: {
-    loaders: {
-      scss: {
-        implementation: Sass,
-        sassOptions: {
-          fiber: Fiber,
-        },
-      },
-    },
-    plugins: [
-      new Webpack.ProvidePlugin({
-        _: 'lodash',
-      }),
-    ],
-  },
+
   head: {
     htmlAttrs: {
       lang: 'ja',
@@ -108,78 +17,30 @@ export default {
     titleTemplate: '%s｜' + baseName,
     title: process.env.npm_package_name || '',
     meta: [
-      {
-        charset: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        name: 'apple-mobile-web-app-title',
-        content: baseName,
-      },
-      {
-        name: 'application-name',
-        content: baseName,
-      },
-      {
-        name: 'msapplication-TileColor',
-        content: '#ffb41d',
-      },
-      {
-        name: 'msapplication-config',
-        content: '/favicons/browserconfig.xml',
-      },
-      {
-        name: 'theme-color',
-        content: '#ffb41d',
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: baseDescription,
-      },
-      {
-        hid: 'og:site_name',
-        property: 'og:site_name',
-        content: baseName,
-      },
-      {
-        hid: 'og:type',
-        property: 'og:type',
-        content: 'article',
-      },
-      {
-        hid: 'og:url',
-        property: 'og:url',
-        content: baseUrl,
-      },
-      {
-        hid: 'og:title',
-        property: 'og:title',
-        content: baseName,
-      },
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'apple-mobile-web-app-title', content: baseName },
+      { name: 'application-name', content: baseName },
+      { name: 'msapplication-TileColor', content: '#ffb41d' },
+      { name: 'msapplication-config', content: '/favicons/browserconfig.xml' },
+      { name: 'theme-color', content: '#ffb41d' },
+      { hid: 'description', name: 'description', content: baseDescription },
+      { hid: 'og:site_name', property: 'og:site_name', content: baseName },
+      { hid: 'og:type', property: 'og:type', content: 'article' },
+      { hid: 'og:url', property: 'og:url', content: baseUrl },
+      { hid: 'og:title', property: 'og:title', content: baseName },
       {
         hid: 'og:description',
         property: 'og:description',
         content: baseDescription,
       },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: baseUrl + baseImage,
-      },
+      { hid: 'og:image', property: 'og:image', content: baseUrl + baseImage },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
         content: 'summary_large_image',
       },
-      {
-        hid: 'twitter:site',
-        name: 'twitter:site',
-        content: '@jaoafa',
-      },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@jaoafa' },
     ],
     link: [
       {
@@ -220,10 +81,95 @@ export default {
         href:
           'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap',
       },
-      {
-        rel: 'stylesheet',
-        href: 'https://use.typekit.net/ibc0rnp.css',
-      },
+      { rel: 'stylesheet', href: 'https://use.typekit.net/ibc0rnp.css' },
     ],
+  },
+
+  css: ['@/assets/sass/reset.scss'],
+
+  plugins: [],
+
+  components: true,
+
+  generate: {
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const limit = 9
+      const pages = await $content('/blog').fetch()
+      const total = Math.ceil(pages.length / limit)
+      return [...Array(total)].map((_, i) => `/blog/page/${i + 1}`)
+    },
+    fallback: true,
+  },
+
+  router: {
+    base: baseDir,
+  },
+
+  publicRuntimeConfig: {
+    baseName,
+    baseDescription,
+    baseUrl,
+    baseImage,
+  },
+
+  privateRuntimeConfig: {},
+
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/google-analytics',
+  ],
+
+  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/sitemap'],
+
+  googleAnalytics: {
+    id: 'UA-93539040-2',
+    dev: process.env.NODE_ENV === 'development',
+  },
+
+  content: {
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-atom-dark.css',
+      },
+    },
+  },
+
+  axios: {},
+
+  sitemap: {
+    hostname: baseUrl,
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const pages = await $content('/', { deep: true })
+        .only(['path', 'extension', 'updatedAt'])
+        .fetch()
+      return pages
+        .filter((item) => item.extension === '.md')
+        .map((item) => {
+          return {
+            url: item.path,
+            lastmod: item.updatedAt,
+          }
+        })
+        .map((item) => {
+          if (item.url.endsWith('/index')) {
+            item.url = item.url.replace(/\/index$/, '')
+          }
+          return item
+        })
+    },
+  },
+
+  build: {
+    loaders: {
+      scss: {
+        implementation: require('sass'),
+        sassOptions: {
+          fiber: require('fibers'),
+        },
+      },
+    },
   },
 }

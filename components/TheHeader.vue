@@ -202,6 +202,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 $header-main-height-mobile: $size-base * 8;
 $header-main-height-desktop: $size-base * 9;
 $header-logo-width-mobile: $size-base * 16;

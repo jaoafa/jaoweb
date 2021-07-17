@@ -75,6 +75,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .the-header-navigation__list {
   display: flex;
   align-items: baseline;

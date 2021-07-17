@@ -62,6 +62,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .article-header__title {
   font-size: $font-size-l3;
   line-height: 1.25;

@@ -85,6 +85,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .article-meta-item {
   display: grid;
   grid-template-rows: ($size-base * 2);

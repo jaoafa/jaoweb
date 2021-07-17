@@ -63,6 +63,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .invite-section {
   background-color: $color-primary;
 }
