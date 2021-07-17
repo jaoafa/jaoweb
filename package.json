@@ -1,16 +1,28 @@
 {
-  "name": "jaoweb",
+  "name": "@jaoafa/jaoweb",
   "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development HOST=0.0.0.0 PORT=3000 BASE_URL=http://localhost:3000 nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
-    "lint": "yarn lint:js && yarn lint:style",
-    "prepare": "husky install"
+  "description": "jao Minecraft Server Website",
+  "keywords": [
+    "jaoafa",
+    "vue",
+    "nuxt"
+  ],
+  "homepage": "https://jaoafa.com/",
+  "bugs": "https://github.com/jaoafa/jaoweb/issues",
+  "license": "UNLICENSED",
+  "contributors": [
+    {
+      "name": "Hiratake",
+      "url": "https://hiratake.xyz/"
+    },
+    {
+      "name": "Tomachi",
+      "url": "https://tomacheese.com/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaoafa/jaoweb.git"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
@@ -51,5 +63,15 @@
     "stylelint-config-standard": "^21.0.0",
     "typescript": "^4.2.3",
     "webpack": "^4.46.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development HOST=0.0.0.0 PORT=3000 BASE_URL=http://localhost:3000 nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
+    "lint": "yarn lint:js && yarn lint:style",
+    "prepare": "husky install"
   }
 }
