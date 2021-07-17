@@ -155,6 +155,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .the-header-expanded-mobile {
   width: 100%;
   padding: ($size-base * 6) 0;

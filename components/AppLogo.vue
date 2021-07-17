@@ -68,6 +68,8 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .BrandLogo {
   width: 100%;
   fill: currentColor;

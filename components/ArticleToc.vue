@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .article-toc {
   width: 100%;
   max-width: ($size-base * 40);

@@ -85,7 +85,7 @@ export default {
     ],
   },
 
-  css: ['@/assets/sass/_reset.scss'],
+  css: ['@/assets/sass/reset.scss'],
 
   plugins: [],
 
@@ -121,12 +121,7 @@ export default {
     '@nuxtjs/google-analytics',
   ],
 
-  modules: [
-    '@nuxt/content',
-    '@nuxtjs/axios',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/sitemap',
-  ],
+  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/sitemap'],
 
   googleAnalytics: {
     id: 'UA-93539040-2',
@@ -142,10 +137,6 @@ export default {
   },
 
   axios: {},
-
-  styleResources: {
-    scss: ['@/assets/sass/_variables.scss', '@/assets/sass/_mixins.scss'],
-  },
 
   sitemap: {
     hostname: baseUrl,

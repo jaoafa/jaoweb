@@ -102,6 +102,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .the-header-expanded-desktop {
   display: none;
 

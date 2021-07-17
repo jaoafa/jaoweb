@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/sass' as *;
+
 .article-collection {
   display: grid;
   grid-template-columns: auto;
