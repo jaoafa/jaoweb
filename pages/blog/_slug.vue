@@ -32,33 +32,38 @@ export default {
     try {
       try {
         article = await $content('blog', slug).fetch()
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Page not found.')
       }
       try {
         article.author = article.author
           ? await $content('blog', 'authors', article.author).fetch()
           : {}
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Author settings is incorrect.')
       }
       try {
         article.category = await $content(
           'blog',
           'categories',
-          article.category
+          article.category,
         ).fetch()
         article.category = {
           name: article.category.name,
           slug: article.category.slug,
         }
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Category settings is incorrect.')
       }
-    } catch (e) {
+    }
+    catch (e) {
       if (e.message === 'Page not found.') {
         error({ statusCode: 404, message: e.message })
-      } else {
+      }
+      else {
         error({ statusCode: 500, message: e.message })
       }
     }
