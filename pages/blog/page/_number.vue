@@ -54,23 +54,28 @@ export default {
         if (!collection.length) {
           throw new Error('Page not found.')
         }
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Page not found.')
       }
       try {
         authors = await $content('blog', 'authors').fetch()
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Author settings is incorrect.')
       }
       try {
         categories = await $content('blog', 'categories').fetch()
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Category settings is incorrect.')
       }
-    } catch (e) {
+    }
+    catch (e) {
       if (e.message === 'Page not found.') {
         error({ statusCode: 404, message: e.message })
-      } else {
+      }
+      else {
         error({ statusCode: 500, message: e.message })
       }
     }

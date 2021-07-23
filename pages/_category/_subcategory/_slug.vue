@@ -30,16 +30,19 @@ export default {
     try {
       try {
         article = await $content(category, subcategory, slug).fetch()
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Page not found.')
       }
       subcategoryTitle = await $content(category, subcategory, 'index')
         .only(['title'])
         .fetch()
-    } catch (e) {
+    }
+    catch (e) {
       if (e.message === 'Page not found.') {
         error({ statusCode: 404, message: e.message })
-      } else {
+      }
+      else {
         error({ statusCode: 500, message: e.message })
       }
     }

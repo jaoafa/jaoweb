@@ -7,15 +7,11 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  extends: [
-    '@nuxtjs',
-    'standard',
-    'prettier',
-    'plugin:prettier/recommended',
-    'plugin:vue/recommended',
-  ],
-  plugins: ['prettier', 'vue'],
+  extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
+  plugins: [],
   rules: {
+    'comma-dangle': ['error', 'always-multiline'],
+    'brace-style': ['error', 'stroustrup'],
     'vue/component-tags-order': [
       'error',
       {
