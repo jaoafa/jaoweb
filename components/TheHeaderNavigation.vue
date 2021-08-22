@@ -60,13 +60,15 @@ export default {
       const items = [...this.items]
       if (this.value === value) {
         this.$emit('change', '')
-      } else if (
+      }
+      else if (
         items.some((item) => {
           return item.to && item.value === value
         })
       ) {
         this.$emit('change', '')
-      } else {
+      }
+      else {
         this.$emit('change', value)
       }
     },

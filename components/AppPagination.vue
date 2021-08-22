@@ -79,11 +79,12 @@ export default {
       const maxLength = Math.min(
         Math.max(0, this.lengthVisible) || this.length,
         Math.max(0, this.maxSize) || this.length,
-        this.length
+        this.length,
       )
       if (maxLength >= this.length) {
         return this.range(1, this.length)
-      } else if (maxLength <= 4) {
+      }
+      else if (maxLength <= 4) {
         return [this.value]
       }
 
@@ -94,13 +95,16 @@ export default {
         const start = this.value - left + 2
         const end = this.value + left - 2 - even
         return [1, '...', ...this.range(start, end), '...', this.length]
-      } else if (this.value === left) {
+      }
+      else if (this.value === left) {
         const end = this.value + left - 1 - even
         return [...this.range(1, end), '...', this.length]
-      } else if (this.value === right) {
+      }
+      else if (this.value === right) {
         const start = this.value - left + 1
         return [1, '...', ...this.range(start, this.length)]
-      } else {
+      }
+      else {
         return [
           ...this.range(1, left),
           '...',

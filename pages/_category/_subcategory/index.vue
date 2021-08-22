@@ -29,17 +29,21 @@ export default {
     try {
       try {
         article = await $content(category, subcategory, 'index').fetch()
-      } catch (e) {
+      }
+      catch (e) {
         try {
           article = await $content(category, subcategory).fetch()
-        } catch (e) {
+        }
+      catch (e) {
           throw new Error('Page not found.')
         }
       }
-    } catch (e) {
+    }
+      catch (e) {
       if (e.message === 'Page not found.') {
         error({ statusCode: 404, message: e.message })
-      } else {
+      }
+      else {
         error({ statusCode: 500, message: e.message })
       }
     }
