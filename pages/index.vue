@@ -132,7 +132,7 @@ export default {
             id: 'kohonayoshi',
             uuid: '26728d53-add7-46d1-97c3-0a25bc6607f5',
             name: 'Kohona',
-          }
+          },
         ],
       },
     }
