@@ -4,6 +4,11 @@
     <section class="hero-section">
       <div class="hero-section__image-container">
         <img :src="heroImage.url" loading="lazy" />
+        <app-progress-bar
+          :percentage="heroImagePercentage"
+          class="hero-section__image-progress"
+          absolute
+        />
       </div>
       <div class="hero-section__photographer-name">
         <span>Photo by {{ heroImage.photographerName }}</span>
@@ -84,7 +89,7 @@ export default {
         url: '/img/main-visual.jpg',
         photographerName: 'Zakuro',
       },
-      heroImages: [],
+      heroImagePercentage: 0,
       members: {
         admin: [
           {
@@ -152,23 +157,36 @@ export default {
     }
   },
   created() {
-    this.$axios.get('https://api.jaoafa.com/website/images').then((res) => {
-      if (!res.data.status) {
-        return
-      }
-      this.heroImages = res.data.data.map((x) => {
-        return {
-          url: `https://storage.jaoafa.com/${x.id}`,
-          photographerName: x.photographerName,
+    this.$axios
+      .get('https://api.jaoafa.com/website/images')
+      .then((res) => {
+        if (res.data.status) {
+          const images = res.data.data.map((item) => {
+            return {
+              url: `https://storage.jaoafa.com/${item.id}`,
+              photographerName: item.photographerName,
+            }
+          })
+          if (images.length) {
+            const interval = 10000
+            let currentImage = 0
+            let currentTime = 0
+            setInterval(() => {
+              currentTime = currentTime + 60
+              this.heroImagePercentage = (currentTime / interval) > 1
+                ? 100
+                : (currentTime / interval) * 100
+              if (currentTime > interval) {
+                this.heroImage = images[currentImage]
+                currentTime = 0
+                currentImage = currentImage === images.length - 1
+                  ? 0
+                  : currentImage + 1
+              }
+            }, 60)
+          }
         }
       })
-
-      setInterval(() => {
-        this.heroImage = this.heroImages[
-          Math.floor(Math.random() * this.heroImages.length)
-        ]
-      }, 10000)
-    })
   },
 }
 </script>
@@ -198,6 +216,7 @@ export default {
 }
 
 .hero-section__image-container {
+  position: relative;
   flex: 0 0 calc(100% - #{$size-base * 3});
   height: 100%;
 
@@ -210,6 +229,10 @@ export default {
     height: 100%;
     object-fit: cover;
   }
+}
+
+.hero-section__image-progress {
+  bottom: 0;
 }
 
 .hero-section__photographer-name {
