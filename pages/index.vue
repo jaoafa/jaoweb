@@ -84,6 +84,7 @@ export default {
         url: '/img/main-visual.jpg',
         photographerName: 'Zakuro',
       },
+      heroImages: [],
       members: {
         admin: [
           {
@@ -149,6 +150,25 @@ export default {
         },
       ],
     }
+  },
+  created() {
+    this.$axios.get('https://api.jaoafa.com/website/images').then((res) => {
+      if (!res.data.status) {
+        return
+      }
+      this.heroImages = res.data.data.map((x) => {
+        return {
+          url: `https://storage.jaoafa.com/${x.id}`,
+          photographerName: x.photographerName,
+        }
+      })
+
+      setInterval(() => {
+        this.heroImage = this.heroImages[
+          Math.floor(Math.random() * this.heroImages.length)
+        ]
+      }, 10000)
+    })
   },
 }
 </script>
