@@ -119,9 +119,9 @@ export default {
             name: 'Zozokasu',
           },
           {
-            id: 'kohonayoshi',
-            uuid: '26728d53-add7-46d1-97c3-0a25bc6607f5',
-            name: 'Kohona',
+            id: 'MinHero_exp',
+            uuid: '0ad34a33-3ca4-4c86-84f3-a4591920b06a',
+            name: 'Ekipa',
           },
           {
             id: 'Nudonge',
@@ -129,10 +129,10 @@ export default {
             name: 'Nudonge',
           },
           {
-            id: 'MinHero_exp',
-            uuid: '0ad34a33-3ca4-4c86-84f3-a4591920b06a',
-            name: 'Ekipa',
-          },
+            id: 'kohonayoshi',
+            uuid: '26728d53-add7-46d1-97c3-0a25bc6607f5',
+            name: 'Kohona',
+          }
         ],
       },
     }
