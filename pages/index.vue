@@ -3,10 +3,27 @@
     <!-- Hero section -->
     <section class="hero-section">
       <div class="hero-section__image-container">
-        <img :src="heroImage.url" loading="lazy" />
+        <template v-for="(item, index) in heroImages">
+          <img
+            :key="index"
+            :src="item.url"
+            :class="{
+              'hero-section__image--current': index === heroImageIndex,
+            }"
+            class="hero-section__image"
+            loading="lazy"
+          />
+        </template>
+        <app-progress-bar
+          :percentage="heroImagePercentage"
+          class="hero-section__image-progress"
+          absolute
+        />
       </div>
       <div class="hero-section__photographer-name">
-        <span>Photo by {{ heroImage.photographerName }}</span>
+        <span>
+          Photo by {{ heroImages[heroImageIndex].photographerName }}
+        </span>
       </div>
     </section>
     <!-- Intro section -->
@@ -80,10 +97,14 @@
 export default {
   data() {
     return {
-      heroImage: {
-        url: '/img/main-visual.jpg',
-        photographerName: 'Zakuro',
-      },
+      heroImages: [
+        {
+          url: '/img/main-visual.jpg',
+          photographerName: 'Zakuro',
+        },
+      ],
+      heroImagePercentage: 0,
+      heroImageIndex: 0,
       members: {
         admin: [
           {
@@ -150,6 +171,36 @@ export default {
       ],
     }
   },
+  created() {
+    this.$axios
+      .get('https://api.jaoafa.com/website/images')
+      .then((res) => {
+        if (res.data.status) {
+          res.data.data.forEach((item) => {
+            this.heroImages.push({
+              url: `https://storage.jaoafa.com/${item.id}`,
+              photographerName: item.photographerName,
+            })
+          })
+          if (res.data.data.length) {
+            const interval = 10000
+            let currentTime = 0
+            setInterval(() => {
+              currentTime = currentTime + 60
+              this.heroImagePercentage = (currentTime / interval) > 1
+                ? 100
+                : (currentTime / interval) * 100
+              if (currentTime > interval) {
+                currentTime = 0
+                this.heroImageIndex = this.heroImageIndex === res.data.data.length
+                  ? 0
+                  : this.heroImageIndex + 1
+              }
+            }, 60)
+          }
+        }
+      })
+  },
 }
 </script>
 
@@ -178,18 +229,30 @@ export default {
 }
 
 .hero-section__image-container {
+  position: relative;
   flex: 0 0 calc(100% - #{$size-base * 3});
   height: 100%;
 
   @include bp(md) {
     flex: 0 0 calc(100% - #{$size-base * 5});
   }
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.hero-section__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity ($transition-duration-base * 4);
+
+  &--current {
+    opacity: 1;
   }
+}
+
+.hero-section__image-progress {
+  bottom: 0;
 }
 
 .hero-section__photographer-name {
