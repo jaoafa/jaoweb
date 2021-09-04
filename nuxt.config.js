@@ -121,7 +121,11 @@ export default {
     '@nuxtjs/google-analytics',
   ],
 
-  modules: ['@nuxt/content', '@nuxtjs/axios', '@nuxtjs/sitemap'],
+  modules: [
+    '@nuxt/content',
+    '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
+  ],
 
   googleAnalytics: {
     id: 'UA-93539040-2',
