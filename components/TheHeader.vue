@@ -170,7 +170,7 @@ export default {
           ],
         },
         {
-          text: 'お問い合わせ',
+          text: 'サポート',
           value: 'support',
           children: [
             {

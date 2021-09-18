@@ -141,7 +141,7 @@ export default {
             this.category === 'server'
               ? 'サーバ情報'
               : this.category === 'support'
-              ? 'お問い合わせ'
+              ? 'サポート'
               : '',
         },
         {
