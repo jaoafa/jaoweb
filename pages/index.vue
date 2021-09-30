@@ -40,7 +40,7 @@
         </div>
         <app-button
           color="discord"
-          href="https://discord.com/invite/YjwYEBk"
+          href="https://discord.com/invite/jDY9AwDS9v"
           large
         >
           <app-icon icon="discord" left />

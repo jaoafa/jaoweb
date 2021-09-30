@@ -101,7 +101,7 @@ export default {
         },
         {
           icon: 'discord',
-          href: 'https://discord.com/invite/YjwYEBk',
+          href: 'https://discord.com/invite/qhRFRNBFSc',
           value: 'discord',
         },
         {
