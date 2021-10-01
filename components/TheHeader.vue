@@ -164,7 +164,7 @@ export default {
             },
             {
               text: 'Discord',
-              href: 'https://discord.com/invite/YjwYEBk',
+              href: 'https://discord.com/invite/7fvwYQDaQp',
               value: 'community-discord',
             },
           ],
