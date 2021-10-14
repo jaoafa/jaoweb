@@ -158,6 +158,11 @@ export default {
               value: 'community-users',
             },
             {
+              text: '処罰一覧',
+              href: 'https://bans.jaoafa.com',
+              value: 'community-bans',
+            },
+            {
               text: 'Wiki',
               href: 'https://wiki.jaoafa.com',
               value: 'community-wiki',
