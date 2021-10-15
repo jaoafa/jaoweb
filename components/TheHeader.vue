@@ -141,6 +141,11 @@ export default {
               href: 'https://map.jaoafa.com/',
               value: 'server-dynmap',
             },
+            {
+              text: '処罰一覧',
+              href: 'https://bans.jaoafa.com',
+              value: 'community-bans',
+            },
           ],
         },
         {
@@ -156,11 +161,6 @@ export default {
               text: 'ユーザ一覧',
               href: 'https://users.jaoafa.com',
               value: 'community-users',
-            },
-            {
-              text: '処罰一覧',
-              href: 'https://bans.jaoafa.com',
-              value: 'community-bans',
             },
             {
               text: 'Wiki',
