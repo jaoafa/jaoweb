@@ -28,7 +28,7 @@
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/sitemap": "^2.4.0",
-    "core-js": "^3.18.1",
+    "core-js": "^3.19.0",
     "nuxt": "^2.15.8",
     "prism-themes": "^1.9.0",
     "vue-scrollto": "^2.20.0"
