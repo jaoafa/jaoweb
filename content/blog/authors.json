@@ -97,5 +97,16 @@
     "twitter": "minhero_exp",
     "github": "minhero-exp",
     "website": ""
+  },
+  {
+    "name": "ゆうあ",
+    "slug": "yuua",
+    "role": "moderator",
+    "minecraft": "yuuahp",
+    "uuid": "13976d72-1389-4332-818e-9cecad363b12",
+    "bio": "主にJavaでの開発をがんばっています。\n初心者Moderatorです。よろしく😉",
+    "twitter": "yuuaHP_dev",
+    "github": "yuuahp",
+    "website": "https://yuua.dev/"
   }
 ]
