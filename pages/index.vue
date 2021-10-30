@@ -154,6 +154,11 @@ export default {
             uuid: '26728d53-add7-46d1-97c3-0a25bc6607f5',
             name: 'Kohona',
           },
+          {
+            id: 'yuuaHP',
+            uuid: '13976d72-1389-4332-818e-9cecad363b12',
+            name: 'Yuua',
+          },
         ],
       },
     }
@@ -386,7 +391,13 @@ export default {
 
 .intro-section__members {
   display: inline-flex;
+  flex-wrap: wrap;
+  gap: ($size-base * 1);
   justify-content: space-around;
+
+  @include bp(sm) {
+    gap: ($size-base * 3);
+  }
 }
 
 .intro-section__user {
@@ -405,14 +416,6 @@ export default {
 
   &:hover {
     opacity: 0.8;
-  }
-
-  & ~ & {
-    margin-left: ($size-base * 1);
-
-    @include bp(sm) {
-      margin-left: ($size-base * 3);
-    }
   }
 
   img {
