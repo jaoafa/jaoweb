@@ -11,7 +11,6 @@
           v-if="category.to"
           :to="category.to"
           class="the-header-expanded-mobile__link"
-          @click.native="closeNavigation"
         >
           <span class="the-header-expanded-mobile__label">
             {{ category.text }}
