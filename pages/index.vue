@@ -391,7 +391,13 @@ export default {
 
 .intro-section__members {
   display: inline-flex;
+  flex-wrap: wrap;
+  gap: ($size-base * 1);
   justify-content: space-around;
+
+  @include bp(sm) {
+    gap: ($size-base * 3);
+  }
 }
 
 .intro-section__user {
@@ -410,14 +416,6 @@ export default {
 
   &:hover {
     opacity: 0.8;
-  }
-
-  & ~ & {
-    margin-left: ($size-base * 1);
-
-    @include bp(sm) {
-      margin-left: ($size-base * 3);
-    }
   }
 
   img {
