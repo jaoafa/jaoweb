@@ -38,7 +38,10 @@
       :current="navigationCurrent"
       :items="navigationItems"
       :mobile-state="navigationMobileState"
-      @close="navigationMobileState = false"
+      @close="
+        navigationMobileState = false
+        navigationCurrent = ''
+      "
     />
   </header>
 </template>
