@@ -1,5 +1,5 @@
 <template>
-  <div class="article-toc">
+  <div v-if="article.toc.length !== 0" class="article-toc">
     <header class="article-toc__header" @click="toggleState">
       <span>目次</span>
       <app-icon

@@ -6,8 +6,6 @@ updatedAt: 2021-03-14
 
 ここではサーバのあんな情報やこんな情報を掲示しています。
 
-## ページ一覧
-
 - [はじめての方へ](/server/beginners)
 - [運営者情報](/server/profiles)
 - [サービス仕様](/server/specifications)
