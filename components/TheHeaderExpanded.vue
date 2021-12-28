@@ -4,7 +4,7 @@
     :class="{ show: mobileState, selected: current }"
   >
     <the-header-expanded-mobile :items="items" @close="closeNavigation" />
-    <the-header-expanded-desktop :current="current" :items="items" />
+    <the-header-expanded-desktop :current="current" :items="items" @close="closeNavigation" />
   </div>
 </template>
 

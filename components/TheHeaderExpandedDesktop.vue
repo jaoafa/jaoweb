@@ -20,6 +20,7 @@
           v-if="item.to"
           :to="item.to"
           class="the-header-expanded-desktop__link"
+          @click.native="closeNavigation"
         >
           {{ item.text }}
         </nuxt-link>
@@ -41,6 +42,7 @@
               v-if="page.to"
               :to="page.to"
               class="the-header-expanded-desktop__link"
+              @click.native="closeNavigation"
             >
               {{ page.text }}
             </nuxt-link>
@@ -96,6 +98,11 @@ export default {
           this.currentIndex = newValue
         }
       },
+    },
+  },
+  methods: {
+    closeNavigation() {
+      this.$emit('close')
     },
   },
 }
