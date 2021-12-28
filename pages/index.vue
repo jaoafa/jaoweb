@@ -145,11 +145,6 @@ export default {
             name: 'Ekipa',
           },
           {
-            id: 'Nudonge',
-            uuid: '22b69dc2-a8e7-4ffd-a3d0-54023d687d5f',
-            name: 'Nudonge',
-          },
-          {
             id: 'kohonayoshi',
             uuid: '26728d53-add7-46d1-97c3-0a25bc6607f5',
             name: 'Kohona',
