@@ -46,7 +46,7 @@ export default {
       // Server Address
       serverAddress: 'play.jaoafa.com',
       // Server Version
-      serverVersion: '1.18.1',
+      serverVersion: '1.18.2',
     }
   },
   methods: {
