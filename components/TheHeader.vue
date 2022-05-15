@@ -182,6 +182,11 @@ export default {
           value: 'support',
           children: [
             {
+              text: 'ステータスページ',
+              href: 'https://status.jaoafa.com',
+              value: 'support-status',
+            },
+            {
               text: 'お問い合わせ',
               to: '/support/inquiry',
               value: 'support-inquiry',
