@@ -161,8 +161,13 @@ export default {
           value: 'community',
           children: [
             {
-              text: 'ユーザ一覧',
+              text: 'ユーザページ',
               href: 'https://users.jaoafa.com',
+              value: 'community-users',
+            },
+            {
+              text: 'データサイト',
+              href: 'https://jaoafa.com/data/',
               value: 'community-users',
             },
             {
